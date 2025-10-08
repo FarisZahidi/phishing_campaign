@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
         :root {
             --lznk-primary: #00573F;
@@ -868,7 +869,7 @@
         <div class="text-center mt-5 mb-5 animate__animated animate__pulse animate__infinite">
             <h3>Laporkan Sebarang Cubaan Phishing!</h3>
             <p class="lead">Keselamatan siber adalah tanggungjawab bersama.</p>
-            <a href="report_phishing.html" class="btn btn-lznk btn-lg mt-3">Laporkan Insiden Phishing</a>
+            <a href="javascript:void(0)" onclick="showUnderConstruction()" class="btn btn-lznk btn-lg mt-3">Laporkan Insiden Phishing</a>
         </div>
 
         <!-- Quiz Section -->
@@ -1148,7 +1149,7 @@
                                         <li>Jumlah: RM 2,750</li>
                                     </ul>
                                     <p>Sila klik butang di bawah untuk membuat pembayaran segera:</p>
-                                    <a href="{{.URL}}&amp;fname={{.FirstName}}&amp;email={{.Email}}" class="btn btn-danger mb-3">BAYAR SEKARANG</a>
+                                    <a href="javascript:void(0)" onclick="showPhishingAlert()" class="btn btn-danger mb-3">BAYAR SEKARANG</a>
                                     <p class="text-danger"><small>*Pembayaran perlu dijelaskan dalam tempoh 24 jam</small></p>
                                     <hr>
                                     <p class="mb-0"><small>Lembaga Zakat Negri Kedah<br>Tingkat 1, Menara Zakat<br>Jalan Telok Wanjah</small></p>
@@ -1252,7 +1253,43 @@
 </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        function showPhishingAlert() {
+            Swal.fire({
+                title: '🎣 Anda Telah di-Phishing!',
+                text: 'Ini adalah simulasi serangan phishing. Sentiasa berwaspada dengan pautan yang anda klik.',
+                width: 600,
+                padding: "3em",
+                color: "#dc3545",
+                background: "#fff",
+                confirmButtonText: 'Fahami',
+                confirmButtonColor: '#dc3545',
+                backdrop: `
+                    rgba(220, 53, 69, 0.4)
+                    left top
+                    no-repeat
+                `,
+                customClass: {
+                    popup: 'animated fadeInDown'
+                }
+            });
+        }
+
+        function showUnderConstruction() {
+            Swal.fire({
+                title: '🚧 Under Construction',
+                text: 'Halaman ini sedang dalam pembangunan. Sila cuba sebentar lagi.',
+                icon: 'info',
+                confirmButtonText: 'Fahami',
+                confirmButtonColor: '#00573F',
+                background: '#fff',
+                customClass: {
+                    popup: 'animated fadeInDown'
+                }
+            });
+        }
+
         // Get URL parameters for GoPhish tracking
         const urlParams = new URLSearchParams(window.location.search);
         const rid = urlParams.get('rid') || urlParams.get('RId');
