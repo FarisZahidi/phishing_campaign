@@ -57,6 +57,7 @@
             --transition-fast: 150ms ease-in-out;
             --transition-base: 250ms ease-in-out;
             --transition-slow: 350ms ease-in-out;
+            --stat-item-height: clamp(240px, 28vw, 320px);
         }
         
         /* Enhanced smooth scrolling and performance optimizations */
@@ -245,6 +246,180 @@
             left: 100%;
         }
         
+        /* Enhanced Phishing Alert Header Section */
+        .phishing-alert-header {
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .disclaimer-banner {
+            background: linear-gradient(135deg, var(--lznk-primary) 0%, #004d36 100%);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            border-bottom: 4px solid var(--lznk-accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .disclaimer-banner::before {
+            content: '🔒';
+            position: absolute;
+            left: 20px;
+            font-size: 1.2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .red-alert-section {
+            background: 
+                linear-gradient(135deg, rgba(198, 40, 40, 0.1) 0%, transparent 100%),
+                linear-gradient(to bottom, #c62828 0%, #d32f2f 50%, #b71c1c 100%);
+            padding: 3rem var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated background pattern */
+        .red-alert-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            animation: shimmer 4s infinite;
+        }
+        
+        .red-alert-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .alert-heading {
+            color: white;
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.4),
+                4px 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            animation: pulseScale 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseScale {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            50% { 
+                transform: scale(1.03); 
+            }
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.4));
+            animation: warningBounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes warningBounce {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-8px) rotate(-5deg); 
+            }
+            75% { 
+                transform: translateY(-8px) rotate(5deg); 
+            }
+        }
+        
+        .alert-content-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .alert-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            margin: var(--spacing-lg) auto;
+            border-radius: 2px;
+        }
+        
+        .alert-subtitle {
+            color: white;
+            text-align: center;
+            font-size: 1.4rem;
+            margin: var(--spacing-lg) auto 0;
+            line-height: 1.8;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .alert-description {
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            font-size: 1.15rem;
+            margin: var(--spacing-md) auto 0;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .alert-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: var(--spacing-lg);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+        }
+        
         /* Enhanced alert boxes with improved visual hierarchy */
         .alert-box {
             border-left: 5px solid var(--lznk-danger);
@@ -280,33 +455,353 @@
         }
         
         .warning-box {
-            border-left: 5px solid var(--lznk-warning);
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 193, 7, 0.12) 100%);
+            border: 3px solid var(--lznk-warning);
+            border-left: 6px solid var(--lznk-warning);
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 240, 165, 0.15) 100%);
             padding: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.15);
             transition: all var(--transition-base);
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .warning-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-warning), rgba(255, 193, 7, 0.5));
         }
         
         .warning-box:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.25);
+            border-color: var(--lznk-accent);
+        }
+        
+        .warning-box h3 {
+            color: #c68400;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--lznk-warning);
+            display: inline-block;
         }
         
         .info-box {
-            border-left: 5px solid var(--lznk-secondary);
-            background: linear-gradient(135deg, rgba(74, 139, 113, 0.08) 0%, rgba(74, 139, 113, 0.12) 100%);
+            border: 3px solid var(--lznk-secondary);
+            border-left: 6px solid var(--lznk-secondary);
+            background: linear-gradient(135deg, rgba(74, 139, 113, 0.1) 0%, rgba(200, 230, 201, 0.15) 100%);
             padding: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 20px rgba(74, 139, 113, 0.15);
             transition: all var(--transition-base);
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-secondary), rgba(74, 139, 113, 0.5));
         }
         
         .info-box:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(74, 139, 113, 0.25);
+            border-color: var(--lznk-primary);
+        }
+        
+        .info-box h3 {
+            color: var(--lznk-primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--lznk-secondary);
+            display: inline-block;
+        }
+        
+        /* Enhanced list styling for boxes */
+        .info-box ul, .warning-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .info-box ul li, .warning-box ul li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .info-box ul li::before {
+            content: '🛡️';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+        
+        .warning-box ul li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+        
+        .info-box p, .warning-box p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+            color: #2c3e50;
+        }
+        
+        .warning-box p strong {
+            color: #c68400;
+            font-weight: 700;
+        }
+        
+        /* Email Detection Section */
+        .email-detection-section {
+            padding: var(--spacing-xxl) 0;
+            margin-top: var(--spacing-xxl);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+        
+        .section-title-modern {
+            color: var(--lznk-primary);
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title-underline {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-accent), var(--lznk-primary));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+        
+        .email-image-wrapper {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 30px rgba(0, 87, 63, 0.12);
+            transition: all var(--transition-base);
+            border: 2px solid rgba(0, 87, 63, 0.1);
+        }
+        
+        .email-image-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 87, 63, 0.18);
+            border-color: var(--lznk-accent);
+        }
+        
+        .email-detection-img {
+            border-radius: var(--radius-md);
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Video Wrapper in Email Detection Section */
+        .email-detection-section .video-wrapper {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 30px rgba(0, 87, 63, 0.12);
+            transition: all var(--transition-base);
+            border: 2px solid rgba(0, 87, 63, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-primary), var(--lznk-accent));
+        }
+        
+        .video-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 87, 63, 0.18);
+            border-color: var(--lznk-accent);
+        }
+        
+        .video-player {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            display: block;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Enhanced Tips Section */
+        .phishing-tips {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: var(--spacing-xxl) 0;
+            margin-top: var(--spacing-xxl);
+            border-radius: var(--radius-lg);
+        }
+        
+        .phishing-tips h2 {
+            color: var(--lznk-primary);
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-xxl);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .phishing-tips h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-accent), var(--lznk-primary));
+            border-radius: 2px;
+        }
+        
+        .tip-card-modern {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0, 87, 63, 0.08);
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tip-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lznk-primary), var(--lznk-secondary));
+        }
+        
+        .tip-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 87, 63, 0.15);
+            border-color: var(--lznk-accent);
+        }
+        
+        .tip-card-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(0, 87, 63, 0.08), rgba(74, 139, 113, 0.12));
+            border: 3px solid var(--lznk-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 15px rgba(0, 87, 63, 0.15);
+            position: relative;
+        }
+        
+        .tip-card-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--lznk-primary), var(--lznk-secondary));
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+        
+        .tip-card-modern:hover .tip-card-icon-wrapper {
+            transform: scale(1.15) rotate(10deg);
+            border-color: var(--lznk-accent);
+            box-shadow: 0 8px 25px rgba(247, 181, 0, 0.3);
+        }
+        
+        .tip-card-modern:hover .tip-card-icon-wrapper::before {
+            opacity: 0.1;
+        }
+        
+        .tip-card-icon-wrapper .tip-icon-modern {
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tip-card-modern h4 {
+            color: var(--lznk-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tip-card-modern p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tip-card-example {
+            background: linear-gradient(135deg, rgba(0, 87, 63, 0.05), rgba(74, 139, 113, 0.08));
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: var(--spacing-md);
+            border-left: 3px solid var(--lznk-primary);
+        }
+        
+        .tip-card-example.danger {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.05), rgba(220, 53, 69, 0.1));
+            border-left-color: var(--lznk-danger);
+            color: var(--lznk-danger);
+        }
+        
+        .tip-card-example.success {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.05), rgba(40, 167, 69, 0.1));
+            border-left-color: var(--lznk-success);
+            color: var(--lznk-success);
         }
         
         /* Enhanced icons with subtle animations */
@@ -690,12 +1185,6 @@
             font-weight: 500;
         }
         
-        .quiz-container {
-            background-color: #f1f1f1;
-            padding: var(--spacing-xxl);
-            border-radius: var(--radius-xl);
-            margin-top: var(--spacing-xxl);
-        }
         
         .motto {
             font-style: italic;
@@ -862,46 +1351,6 @@
             color: white;
         }
         
-        /* Enhanced quiz section */
-        .quiz-section {
-            background: linear-gradient(135deg, rgba(74, 139, 113, 0.08) 0%, rgba(74, 139, 113, 0.12) 100%);
-            border-radius: var(--radius-xl);
-            padding: var(--spacing-xxl);
-            margin-top: var(--spacing-xxl);
-            border: 1px solid rgba(74, 139, 113, 0.2);
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .quiz-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(74, 139, 113, 0.05) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .quiz-title {
-            color: var(--lznk-primary);
-            font-weight: 800;
-            margin-bottom: var(--spacing-lg);
-            border-bottom: 3px solid var(--lznk-accent);
-            padding-bottom: var(--spacing-md);
-            display: inline-block;
-            font-size: var(--font-size-3xl);
-            position: relative;
-            z-index: 1;
-        }
-        
         /* Enhanced form elements */
         .form-check-label {
             padding-left: var(--spacing-sm);
@@ -958,6 +1407,46 @@
                 padding: var(--spacing-sm) var(--spacing-md);
             }
             
+            .disclaimer-banner {
+                font-size: 0.85rem;
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+            
+            .disclaimer-banner::before {
+                left: 10px;
+                font-size: 1rem;
+            }
+            
+            .red-alert-section {
+                padding: 2rem var(--spacing-md);
+            }
+            
+            .alert-heading {
+                font-size: 2.2rem;
+                flex-direction: row;
+                gap: var(--spacing-sm);
+                letter-spacing: 2px;
+            }
+            
+            .warning-icon {
+                font-size: 3rem;
+            }
+            
+            .alert-subtitle {
+                font-size: 1.15rem;
+                padding: 0 var(--spacing-md);
+            }
+            
+            .alert-description {
+                font-size: 1.05rem;
+                padding: 0 var(--spacing-md);
+            }
+            
+            .alert-badge {
+                font-size: 0.8rem;
+                padding: var(--spacing-xs) var(--spacing-md);
+            }
+            
             .stat-number {
                 font-size: 2.2rem;
             }
@@ -972,6 +1461,40 @@
             
             .tip-card {
                 margin-bottom: var(--spacing-lg);
+            }
+            
+            .section-title-modern {
+                font-size: 2rem;
+            }
+            
+            .email-image-wrapper {
+                padding: var(--spacing-lg);
+            }
+            
+            
+            .email-detection-section .video-wrapper {
+                padding: var(--spacing-lg);
+            }
+            
+            .phishing-tips h2 {
+                font-size: 2rem;
+            }
+            
+            .tip-card-modern {
+                margin-bottom: var(--spacing-lg);
+            }
+            
+            .tip-card-icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .tip-card-icon-wrapper .tip-icon-modern {
+                font-size: 2rem;
+            }
+            
+            .tip-card-modern h4 {
+                font-size: 1.1rem;
             }
             
             .footer {
@@ -1001,6 +1524,49 @@
             
             .header h2 {
                 font-size: var(--font-size-xl);
+            }
+            
+            .disclaimer-banner {
+                font-size: 0.7rem;
+                padding: var(--spacing-sm);
+                letter-spacing: 0.5px;
+            }
+            
+            .disclaimer-banner::before {
+                display: none;
+            }
+            
+            .red-alert-section {
+                padding: 1.5rem var(--spacing-sm);
+            }
+            
+            .alert-heading {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+            
+            .warning-icon {
+                font-size: 2.2rem;
+            }
+            
+            .alert-divider {
+                width: 60px;
+                height: 2px;
+            }
+            
+            .alert-subtitle {
+                font-size: 1rem;
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .alert-description {
+                font-size: 0.9rem;
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .alert-badge {
+                font-size: 0.7rem;
+                padding: 6px var(--spacing-sm);
             }
             
             .alert-box, .warning-box, .info-box {
@@ -1194,13 +1760,50 @@
             transform: translateX(100%);
         }
         
+        /* Enhanced Simulation Header */
+        .simulation-header {
+            position: relative;
+            padding: var(--spacing-xl);
+        }
+        
+        .simulation-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--lznk-primary), var(--lznk-secondary));
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 15px rgba(0, 87, 63, 0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        .simulation-title {
+            color: var(--lznk-primary);
+            font-weight: 900;
+            font-size: 2.8rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+        
+        .simulation-subtitle {
+            color: #6c757d;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Enhanced Simulator Card */
         .simulator-card {
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 40px rgba(0, 87, 63, 0.15);
             border-radius: var(--radius-xl);
             background: white;
             transition: all var(--transition-base);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(0, 87, 63, 0.1);
         }
         
         .simulator-card::before {
@@ -1209,7 +1812,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--lznk-primary), var(--lznk-accent), var(--lznk-secondary));
             background-size: 200% 100%;
             animation: gradientMove 3s ease-in-out infinite;
@@ -1217,7 +1820,8 @@
         
         .simulator-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 15px 50px rgba(0, 87, 63, 0.2);
+            border-color: var(--lznk-accent);
         }
 
         .email-simulator {
@@ -1283,35 +1887,6 @@
             font-weight: 700;
         }
         
-        .accordion-button:not(.collapsed) {
-            background: linear-gradient(135deg, rgba(0, 87, 63, 0.1) 0%, rgba(74, 139, 113, 0.1) 100%);
-            color: var(--lznk-primary);
-            font-weight: 600;
-            box-shadow: none;
-        }
-        
-        .accordion-button {
-            transition: all var(--transition-base);
-            border-radius: var(--radius-md) !important;
-            margin-bottom: var(--spacing-xs);
-        }
-        
-        .accordion-button:hover {
-            background: linear-gradient(135deg, rgba(0, 87, 63, 0.05) 0%, rgba(74, 139, 113, 0.05) 100%);
-        }
-        
-        .accordion-item {
-            border: 1px solid rgba(0, 87, 63, 0.1);
-            border-radius: var(--radius-lg) !important;
-            margin-bottom: var(--spacing-md);
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-base);
-        }
-        
-        .accordion-item:hover {
-            box-shadow: var(--shadow-md);
-        }
-        
         /* Enhanced progress indicators */
         .progress {
             height: 8px;
@@ -1373,6 +1948,175 @@
             border-color: rgba(0, 87, 63, 0.1);
         }
     </style>
+    <style>
+        /* Full‑bleed horizontal stats strip (RTL, taller, equal-sized items) */
+        :root {
+            --stat-item-width: clamp(280px, 30vw, 380px);
+            --stat-item-height: clamp(260px, 32vw, 340px);
+            --icon-row-height: clamp(64px, 7vw, 84px);
+            --mid-row-height: clamp(72px, 9vw, 110px);
+            --bottom-row-height: clamp(62px, 8vw, 96px);
+        }
+        .stats-strip-fullbleed {
+            background: linear-gradient(90deg, #014f3a 0%, #05664d 50%, #014f3a 100%);
+            color: #ffffff;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding-top: clamp(36px, 6vw, 72px);
+            padding-bottom: clamp(36px, 6vw, 72px);
+            padding-left: clamp(12px, 3vw, 32px);
+            padding-right: clamp(12px, 3vw, 32px);
+            box-shadow: var(--shadow-md);
+            border-radius: 0;
+            overflow: hidden; /* hide overflow for marquee */
+        }
+        .stats-strip-fullbleed:hover .stats-marquee-rtl {
+            animation-play-state: paused;
+        }
+
+        /* RTL marquee: two identical tracks for seamless looping */
+        .stats-marquee-rtl {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xxl);
+            will-change: transform;
+            animation: marqueeLeft 30s linear infinite;
+        }
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xxl);
+        }
+        /* Hide duplicate ‘Track B’ used for seamless looping */
+        .stats-marquee-rtl .marquee-track + .marquee-track {
+            display: none;
+        }
+
+        /* Static override: freeze motion, fit 5 items, add spacing */
+        .stats-strip-fullbleed .stats-marquee-rtl {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            gap: var(--spacing-lg);
+            animation: none !important;
+            transform: none !important;
+        }
+        .stats-strip-fullbleed .marquee-track {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            width: 100%;
+            gap: var(--spacing-lg);
+            animation: none !important;
+            transform: none !important;
+        }
+        .stats-strip-fullbleed .marquee-track + .marquee-track {
+            display: none !important;
+        }
+        @keyframes marqueeLeft {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Equal alignment and height for all items */
+        .stats-item {
+            display: grid;
+            grid-template-rows: var(--icon-row-height) var(--mid-row-height) var(--bottom-row-height);
+            align-items: center;
+            justify-items: center;
+            /* Tambah jarak antara kotak dan ayat bawah */
+            row-gap: clamp(8px, 1.2vw, 16px);
+            width: var(--stat-item-width);
+            height: var(--stat-item-height);
+            box-sizing: border-box;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-left: 1px solid rgba(255, 255, 255, 0.35);
+        }
+        /* Each item takes 20% width in the frozen layout */
+        .stats-strip-fullbleed .stats-item {
+            flex: 1 1 20%;
+            min-width: 0;
+            width: auto;
+            row-gap: clamp(8px, 1.2vw, 16px);
+        }
+        .stats-item:first-child { border-left: 0; }
+
+        /* Garisan menegak di sempadan antara Track A dan Track B */
+        .stats-marquee-rtl .marquee-track + .marquee-track .stats-item:first-child {
+            border-left: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .stat-icon {
+            display: block;
+            font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+            line-height: 1;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+        /* Readable text: wrap lines, fixed row heights, centered */
+        .stat-mid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: clamp(1.35rem, 2.1vw, 1.9rem);
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 6px 12px;
+            height: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            max-width: 100%;
+        }
+        .stat-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+            font-weight: 700;
+            opacity: 0.95;
+            padding: 6px 12px;
+            height: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            max-width: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stats-marquee-rtl { animation: none; }
+        }
+        @media (max-width: 576px) {
+            /* Allow wrapping on very small screens */
+            .stats-strip-fullbleed .marquee-track { flex-wrap: wrap; }
+            .stats-strip-fullbleed .stats-item { flex: 1 1 calc(50% - var(--spacing-lg)); }
+        }
+    </style>
+    <style>
+        @media (max-width: 768px) {
+            .warning-box,
+            .info-box {
+                min-height: auto;
+                padding: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .warning-box,
+            .info-box {
+                min-height: auto;
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Modal Pop-up -->
@@ -1400,26 +2144,33 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="https://phishing-campaign-c13d5.web.app/assets/logo2.png" alt="Logo LZNK" class="logo">
-                <h1>Divisyen Keselamatan Siber</h1>
+    <header class="phishing-alert-header animate__animated animate__fadeIn">
+        <div class="disclaimer-banner">
+            INI ADALAH SIMULASI SERANGAN PHISHING YANG DIJALANKAN OLEH DIVISYEN KESELAMATAN SIBER
             </div>
-            <h2 class="text-center">Program Kesedaran Keselamatan Siber</h2>
-            <div class="text-center">
-                <p class="motto">"KEDAH SEJAHTERA - NIKMAT UNTUK SEMUA"</p>
+        <div class="red-alert-section">
+            <div class="alert-content-wrapper">
+                <h1 class="alert-heading">
+                    <span class="warning-icon">⚠️</span>
+                    ANDA TERJERAT
+                    <span class="warning-icon">⚠️</span>
+                </h1>
+                <div class="alert-divider"></div>
+                <p class="alert-subtitle">
+                    Satu klik sahaja boleh membahayakan seluruh organisasi.
+                </p>
+                <p class="alert-description">
+                    Pelajari cara menjadi benteng pertahanan siber LZNK yang lebih kukuh.
+                </p>
+                <div style="text-align: center;">
+                    <span class="alert-badge">🛡️ Program Kesedaran Siber</span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container">
-        <div class="alert-box animate__animated animate__fadeIn">
-            <h2 class="text-danger text-center mb-4">⚠️ ANDA TELAH TERKENA SERANGAN PHISHING!</h2>
-            <p class="lead text-center">Jangan risau, ini hanyalah simulasi untuk meningkatkan kesedaran keselamatan siber di kalangan warga LZNK.</p>
-            <p class="text-center">Namun, dalam situasi sebenar, tindakan anda mungkin telah membahayakan keselamatan data dan sistem LZNK.</p>
-        </div>
 
         <div class="row mt-5">
             <div class="col-md-6">
@@ -1440,588 +2191,287 @@
                     <h3>Mengapa Ini Penting?</h3>
                     <p>Serangan phishing adalah ancaman serius kepada:</p>
                     <ul>
-                        <li class="text-danger">Keselamatan data peribadi dan organisasi</li>
-                        <li class="text-danger">Kerahsiaan maklumat zakat dan asnaf</li>
-                        <li class="text-danger">Integriti sistem kewangan LZNK</li>
-                        <li class="text-danger">Reputasi Lembaga Zakat Negeri Kedah</li>
+                        <li>Keselamatan data peribadi dan organisasi</li>
+                        <li>Kerahsiaan maklumat zakat dan asnaf</li>
+                        <li>Integriti sistem kewangan LZNK</li>
+                        <li>Reputasi Lembaga Zakat Negeri Kedah</li>
                     </ul>
                     <p><strong>Satu kesilapan kecil boleh mengakibatkan kerugian besar!</strong></p>
                 </div>
             </div>
         </div>
 
-        <!-- Jenis-jenis Phishing -->
-        <div class="row mt-5">
-            <div class="col-12">
-                <h3 class="text-center mb-4">Jenis-jenis Serangan Phishing</h3>
-                <p class="text-center mb-4">Kenali pelbagai jenis serangan phishing untuk melindungi diri anda dengan lebih baik</p>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-primary">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Whaling</h4>
+        <!-- Statistik Ringkas Phishing Malaysia (Static, 5 items across) -->
+        <div class="stats-strip-fullbleed" aria-label="Statistik Phishing Malaysia">
+            <div class="stats-marquee-rtl" aria-live="polite">
+                <!-- Track A (deduped: keep latest per unique data point) -->
+                <div class="marquee-track">
+                    <div class="stats-item">
+                        <span class="stat-icon">🎣</span>
+                        <span class="stat-mid">MyCERT Q1’25</span>
+                        <span class="stat-bottom">Phishing menyumbang 68% kes penipuan</span>
                     </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">🐋</div>
-                        <p>Serangan yang menyasarkan eksekutif kanan atau individu berprofil tinggi dalam organisasi untuk mendapatkan akses kepada maklumat sensitif.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Mesej yang sangat profesional</li>
-                            <li>Menyasarkan pengurusan atasan</li>
-                            <li>Sering berkaitan dengan isu kewangan atau undang-undang</li>
-                            <li>Boleh menyebabkan kerugian kewangan yang besar</li>
-                        </ul>
+                    <div class="stats-item">
+                        <span class="stat-icon">💸</span>
+                        <span class="stat-mid">NSRC Okt’22–Ogos’24</span>
+                        <span class="stat-bottom">RM371 juta kerugian yang telah dilaporkan</span>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-danger">
-                    <div class="card-header bg-danger text-white">
-                        <h4 class="mb-0">Email Phishing</h4>
+                    <div class="stats-item">
+                        <span class="stat-icon">🔒</span>
+                        <span class="stat-mid">NSRC 2023</span>
+                        <span class="stat-bottom">RM383 juta dana disyaki penipuan dibekukan</span>
                     </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">📧</div>
-                        <p>Jenis phishing paling umum di mana penyerang menghantar e-mel yang kelihatan sah untuk mendapatkan maklumat peribadi atau memuat turun perisian hasad.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Alamat e-mel yang mencurigakan</li>
-                            <li>Kesalahan ejaan dan tatabahasa</li>
-                            <li>Permintaan maklumat peribadi</li>
-                            <li>Pautan yang mencurigakan</li>
-                        </ul>
+                    <div class="stats-item">
+                        <span class="stat-icon">📈</span>
+                        <span class="stat-mid">PDRM/CCID 2019→2023</span>
+                        <span class="stat-bottom">Kenaikan kes penipuan 2 kali ganda</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stat-icon">📋</span>
+                        <span class="stat-mid">MyCERT Q4’24</span>
+                        <span class="stat-bottom">1,550 insiden pelbagai kategori dilaporkan</span>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-warning">
-                    <div class="card-header bg-warning text-dark">
-                        <h4 class="mb-0">Spear Phishing</h4>
+                <!-- Track B (duplicate Track A for seamless loop) -->
+                <div class="marquee-track">
+                    <div class="stats-item">
+                        <span class="stat-icon">🎣</span>
+                        <span class="stat-mid">MyCERT Q1’25</span>
+                        <span class="stat-bottom">Phishing menyumbang 68% kes penipuan</span>
                     </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">🎯</div>
-                        <p>Serangan yang disasarkan kepada individu atau organisasi tertentu. Penyerang mengumpul maklumat tentang sasaran untuk membuat serangan lebih meyakinkan.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Mengandungi maklumat peribadi anda</li>
-                            <li>Menyasarkan jawatan atau peranan anda</li>
-                            <li>Kelihatan datang dari rakan sekerja atau pihak atasan</li>
-                            <li>Lebih sukar dikesan kerana lebih peribadi</li>
-                        </ul>
+                    <div class="stats-item">
+                        <span class="stat-icon">💸</span>
+                        <span class="stat-mid">NSRC Okt’22–Ogos’24</span>
+                        <span class="stat-bottom">RM371 juta kerugian yang telah dilaporkan</span>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-success">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="mb-0">Smishing (SMS Phishing)</h4>
+                    <div class="stats-item">
+                        <span class="stat-icon">🔒</span>
+                        <span class="stat-mid">NSRC 2023</span>
+                        <span class="stat-bottom">RM383 juta dana disyaki penipuan dibekukan</span>
                     </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">📱</div>
-                        <p>Serangan phishing yang dijalankan melalui mesej teks (SMS) untuk mendapatkan maklumat peribadi atau memuat turun perisian hasad.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Mesej teks yang mendesak</li>
-                            <li>Pautan yang dipendekkan</li>
-                            <li>Tawaran atau amaran yang tidak diminta</li>
-                            <li>Meminta maklumat peribadi atau kewangan</li>
-                        </ul>
+                    <div class="stats-item">
+                        <span class="stat-icon">📈</span>
+                        <span class="stat-mid">PDRM/CCID 2019→2023</span>
+                        <span class="stat-bottom">Kenaikan kes penipuan 2 kali ganda</span>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-info">
-                    <div class="card-header bg-info text-white">
-                        <h4 class="mb-0">Vishing (Voice Phishing)</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">📞</div>
-                        <p>Serangan phishing yang menggunakan panggilan telefon untuk menipu mangsa supaya mendedahkan maklumat peribadi atau kewangan.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Panggilan dari nombor yang tidak dikenali</li>
-                            <li>Pemanggil menyamar sebagai pihak berkuasa</li>
-                            <li>Tekanan untuk bertindak segera</li>
-                            <li>Permintaan untuk maklumat peribadi</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-dark">
-                    <div class="card-header bg-dark text-white">
-                        <h4 class="mb-0">Clone Phishing</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="tip-icon">🔄</div>
-                        <p>Penyerang membuat salinan e-mel yang sah yang pernah diterima oleh mangsa, tetapi menggantikan pautan atau lampiran dengan versi berbahaya.</p>
-                        <p><strong>Ciri-ciri:</strong></p>
-                        <ul class="text-start">
-                            <li>Kelihatan seperti e-mel yang pernah diterima</li>
-                            <li>Mengandungi frasa seperti "versi terkini" atau "penghantaran semula"</li>
-                            <li>Pautan atau lampiran yang berbeza dari e-mel asal</li>
-                            <li>Alamat penghantar yang hampir sama dengan yang asal</li>
-                        </ul>
+                    <div class="stats-item">
+                        <span class="stat-icon">📋</span>
+                        <span class="stat-mid">MyCERT Q4’24</span>
+                        <span class="stat-bottom">1,550 insiden pelbagai kategori dilaporkan</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Statistics -->
-        <div class="stats-container animate__animated animate__fadeIn">
+        <!-- Mengesan Emel Phishing Section -->
+        <section class="email-detection-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-shield-exclamation"></i>
-                            </div>
-                            <div class="stat-number">95%</div>
-                            <div class="stat-text">Serangan siber melibatkan kesilapan manusia</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-currency-exchange"></i>
-                            </div>
-                            <div class="stat-number">RM4.2 Juta</div>
-                            <div class="stat-text">Anggaran kerugian akibat penipuan dalam talian di Malaysia (2023)</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-graph-up-arrow"></i>
-                            </div>
-                            <div class="stat-number">67%</div>
-                            <div class="stat-text">Peningkatan kes phishing yang disasarkan kepada institusi kewangan</div>
-                        </div>
-                    </div>
+                <div class="text-center mb-5">
+                    <h2 class="section-title-modern">Mengesan Emel Phishing</h2>
+                    <div class="title-underline"></div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Tips Section -->
-        <section class="phishing-tips">
-            <h2 class="text-center mb-5">Cara Mengenal Pasti & Mengelakkan Phishing</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">🔍</div>
-                            <h4>Periksa URL</h4>
-                            <p>Pastikan URL laman web adalah tepat. Penipu sering menggunakan URL yang kelihatan serupa tetapi mempunyai perbezaan kecil.</p>
-                            <p class="text-danger">Contoh: zakatkedah.com.my vs zakatkedah-secure.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">✉️</div>
-                            <h4>Teliti Alamat E-mel</h4>
-                            <p>Periksa alamat e-mel penghantar dengan teliti. Alamat e-mel rasmi LZNK akan berakhir dengan @zakatkedah.com.my.</p>
-                            <p class="text-danger">Contoh palsu: info@zakatkedah-mail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">🔒</div>
-                            <h4>Cari Tanda Keselamatan</h4>
-                            <p>Pastikan laman web mempunyai ikon kunci dan protokol HTTPS. Ini menunjukkan sambungan selamat.</p>
-                            <p class="text-success">https://www.zakatkedah.com.my ✓</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">⚠️</div>
-                            <h4>Berhati-hati dengan Kecemasan</h4>
-                            <p>Berwaspada dengan mesej yang mendesak anda bertindak segera. Penipu sering menggunakan taktik kecemasan.</p>
-                            <p class="text-danger">"Akaun anda akan disekat dalam masa 24 jam!"</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">🔑</div>
-                            <h4>Jangan Kongsi Maklumat Sensitif</h4>
-                            <p>LZNK tidak akan meminta kata laluan atau maklumat peribadi melalui e-mel. Jangan sesekali berkongsi maklumat sensitif.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card tip-card animate__animated animate__fadeInUp" style="animation-delay: 1s">
-                        <div class="card-body text-center">
-                            <div class="tip-icon">📞</div>
-                            <h4>Sahkan Melalui Saluran Rasmi</h4>
-                            <p>Jika anda menerima e-mel yang mencurigakan, hubungi Divisyen Keselamatan Siber LZNK melalui talian rasmi.</p>
-                            <p>Tel: 04-XXXXXXX</p>
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        
+                        <!-- Video Section -->
+                        <div class="video-wrapper mt-5">
+                            <video 
+                                src="https://phishing-campaign-c13d5.web.app/assets/phishVideo.mp4" 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline
+                                class="video-player">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <div class="text-center mt-5 mb-5 animate__animated animate__pulse animate__infinite">
-            <h3>Laporkan Sebarang Cubaan Phishing!</h3>
-            <p class="lead">Keselamatan siber adalah tanggungjawab bersama.</p>
-            <a href="javascript:void(0)" onclick="showUnderConstruction()" class="btn btn-lznk btn-lg mt-3">Laporkan Insiden Phishing</a>
-        </div>
 
-        <!-- Quiz Section -->
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-                <div class="quiz-section" id="kuiz-phishing">
-                    <h2 class="quiz-title">Uji Pengetahuan Anda</h2>
-                    <p class="lead">Jawab soalan-soalan berikut untuk menguji tahap kesedaran anda tentang phishing:</p>
-                    
-                    <div class="mb-4">
-                        <p><strong>1. Manakah antara berikut adalah tanda e-mel phishing?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
-                            <label class="form-check-label" for="q1a">
-                                E-mel dari pengurus anda dengan alamat e-mel rasmi
-                            </label>
+        <!-- Tips Section -->
+        <section class="phishing-tips">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Cara Mengenal Pasti & Mengelakkan Phishing</h2>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1" id="q1b" value="b">
-                            <label class="form-check-label" for="q1b">
-                                E-mel yang meminta kata laluan atau maklumat peribadi anda
-                            </label>
+                <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">🔍</span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
-                            <label class="form-check-label" for="q1c">
-                                E-mel dengan logo syarikat yang betul
-                            </label>
+                            <h4 class="text-center">Periksa URL</h4>
+                            <p class="text-center">Pastikan URL tepat. Penipu guna URL serupa dengan perbezaan kecil.</p>
+                            <div class="tip-card-example danger">
+                                ✗ zakatkedah-secure.com
                         </div>
                     </div>
-                    
-                    <div class="mb-4">
-                        <p><strong>2. Apakah tindakan terbaik jika anda menerima e-mel yang mencurigakan?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2a" value="a">
-                            <label class="form-check-label" for="q2a">
-                                Klik pada pautan untuk menyemak kesahihannya
-                            </label>
+                </div>
+                <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">✉️</span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2b" value="b">
-                            <label class="form-check-label" for="q2b">
-                                Laporkan kepada Divisyen Keselamatan Siber
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2c" value="c">
-                            <label class="form-check-label" for="q2c">
-                                Teruskan dengan arahan dalam e-mel
-                            </label>
+                            <h4 class="text-center">Teliti E-mel</h4>
+                            <p class="text-center">E-mel rasmi LZNK berakhir dengan @zakatkedah.com.my sahaja.</p>
+                            <div class="tip-card-example danger">
+                                ✗ info@zakatkedah-mail.com
                         </div>
                     </div>
-                    
-                    <!-- Soalan Baru #1 - Tahap Mudah -->
-                    <div class="mb-4">
-                        <p><strong>3. Apakah yang dimaksudkan dengan "Smishing"?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3a" value="a">
-                            <label class="form-check-label" for="q3a">
-                                Serangan phishing melalui media sosial
-                            </label>
+                </div>
+                <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">🔒</span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3b" value="b">
-                            <label class="form-check-label" for="q3b">
-                                Serangan phishing melalui mesej SMS
-                            </label>
+                            <h4 class="text-center">Cari Ikon Kunci</h4>
+                            <p class="text-center">Pastikan ada ikon kunci dan HTTPS untuk sambungan selamat.</p>
+                            <div class="tip-card-example success">
+                                ✓ https://www.zakatkedah.com.my
+                    </div>
+                </div>
+            </div>
+                    <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">⚠️</span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3c" value="c">
-                            <label class="form-check-label" for="q3c">
-                                Serangan phishing yang menyasarkan sistem keselamatan
-                            </label>
+                            <h4 class="text-center">Jangan Panik</h4>
+                            <p class="text-center">Mesej mendesak adalah taktik penipu. Fikir dulu sebelum klik.</p>
+                            <div class="tip-card-example danger">
+                                ✗ "Akaun disekat dalam 24 jam!"
+                    </div>
                         </div>
                     </div>
-                    
-                    <!-- Soalan Baru #2 - Tahap Sederhana -->
-                    <div class="mb-4">
-                        <p><strong>4. Manakah antara berikut BUKAN merupakan ciri URL yang mencurigakan?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4a" value="a">
-                            <label class="form-check-label" for="q4a">
-                                URL mengandungi ejaan yang salah seperti "zakatkedahh.com"
-                            </label>
+                    <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">🔑</span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4b" value="b">
-                            <label class="form-check-label" for="q4b">
-                                URL menggunakan protokol HTTPS dengan ikon kunci
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4c" value="c">
-                            <label class="form-check-label" for="q4c">
-                                URL mengandungi banyak nombor dan aksara khas yang tidak berkaitan
-                            </label>
+                            <h4 class="text-center">Jaga Maklumat Sensitif</h4>
+                            <p class="text-center">LZNK tidak akan minta kata laluan atau data peribadi via e-mel.</p>
+                            <div class="tip-card-example danger">
+                                ✗ Jangan kongsi password!
+                    </div>
                         </div>
                     </div>
-                    
-                    <!-- Soalan Baru #3 - Tahap Sukar -->
-                    <div class="mb-4">
-                        <p><strong>5. Dalam konteks keselamatan siber LZNK, apakah yang dimaksudkan dengan "Whaling"?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5a" value="a">
-                            <label class="form-check-label" for="q5a">
-                                Serangan phishing yang menyasarkan eksekutif kanan atau pengurusan atasan
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5b" value="b">
-                            <label class="form-check-label" for="q5b">
-                                Serangan yang menggunakan fail bersaiz besar untuk merosakkan sistem
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5c" value="c">
-                            <label class="form-check-label" for="q5c">
-                                Teknik untuk mengesan serangan phishing berskala besar
-                            </label>
-                        </div>
+                    <div class="col-md-4">
+                        <div class="tip-card-modern animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                            <div class="tip-card-icon-wrapper">
+                                <span class="tip-icon-modern">📞</span>
+                </div>
+                            <h4 class="text-center">Sahkan Dahulu</h4>
+                            <p class="text-center">Untuk laporan atau pengesahan, hubungi nombor berikut.</p>
+                            <div class="tip-card-example">
+                                📞 Aduan ICT: 019-488 1740 
+                                <br>📞 Aduan DKS: 013-599 1740
+                            </div>
                     </div>
-                    
-                    <!-- Soalan Baru #4 - Berkaitan LZNK -->
-                    <div class="mb-4">
-                        <p><strong>6. Mengikut polisi keselamatan LZNK, apakah yang perlu anda lakukan jika anda telah mengklik pautan phishing dan memasukkan maklumat log masuk?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6a" value="a">
-                            <label class="form-check-label" for="q6a">
-                                Tunggu dan lihat jika ada aktiviti mencurigakan
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6b" value="b">
-                            <label class="form-check-label" for="q6b">
-                                Segera tukar kata laluan dan laporkan insiden kepada Divisyen Keselamatan Siber
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6c" value="c">
-                            <label class="form-check-label" for="q6c">
-                                Format komputer untuk menghapuskan semua virus
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Soalan Baru #5 - Tahap Aplikasi -->
-                    <div class="mb-4">
-                        <p><strong>7. Anda menerima e-mel daripada "pengarah.lznk@gmail.com" yang meminta anda membuat pembayaran segera kepada akaun baru. Apakah tindakan terbaik?</strong></p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7a" value="a">
-                            <label class="form-check-label" for="q7a">
-                                Buat pembayaran kerana ia dari pengarah
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7b" value="b">
-                            <label class="form-check-label" for="q7b">
-                                Sahkan permintaan melalui telefon dengan pengarah dan semak dengan Jabatan Kewangan
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7c" value="c">
-                            <label class="form-check-label" for="q7c">
-                                Balas e-mel untuk mendapatkan maklumat lanjut
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button class="cta-primary" onclick="checkAnswers()">Semak Jawapan</button>
-                    <div id="quizResults" class="mt-3"></div>
                 </div>
             </div>
         </div>
+    </section>
+
+
     </main>
 
-    <!-- Case Studies Section -->
-    <section class="case-studies py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-4">Kes Kajian: Serangan Phishing di Malaysia</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="case-study-card animate__animated animate__fadeInUp">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="case-icon mb-3">
-                                    <i class="bi bi-bank text-primary fs-1"></i>
-                                </div>
-                                <h4>Penipuan Bank</h4>
-                                <p class="text-muted"><i class="bi bi-calendar-event"></i> Januari 2023</p>
-                                <p>Pelaku menghantar e-mel palsu yang kononnya dari bank tempatan, meminta pengguna mengemaskini maklumat akaun.</p>
-                                <div class="alert alert-warning">
-                                    <strong>Pengajaran:</strong> Bank tidak akan meminta maklumat peribadi atau kata laluan melalui e-mel.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="case-study-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="case-icon mb-3">
-                                    <i class="bi bi-shop text-success fs-1"></i>
-                                </div>
-                                <h4>Penipuan E-dagang</h4>
-                                <p class="text-muted"><i class="bi bi-calendar-event"></i> Mac 2023</p>
-                                <p>Pengguna menerima e-mel palsu tentang tawaran istimewa dari platform e-dagang popular dengan pautan berbahaya.</p>
-                                <div class="alert alert-warning">
-                                    <strong>Pengajaran:</strong> Sentiasa periksa URL dan gunakan laman web rasmi untuk membuat pembelian.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center mb-4">Soalan Lazim</h2>
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item">
-                    <h3 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            <i class="bi bi-question-circle me-2"></i>
-                            Bagaimana saya boleh mengesan e-mel phishing?
-                        </button>
-                    </h3>
-                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            <ul class="list-unstyled">
-                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Periksa alamat e-mel pengirim</li>
-                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Perhatikan kesilapan ejaan dan tatabahasa</li>
-                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Berwaspada dengan permintaan maklumat peribadi</li>
-                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Periksa URL sebelum klik pautan</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Simulator Phishing LZNK -->
+    <!-- Simulation Section -->
     <section class="simulator-section py-5">
         <div class="container">
-            <h2 class="section-title text-center mb-4">Simulator Phishing LZNK</h2>
-            <p class="lead text-center mb-4">Cuba kenalpasti e-mel phishing yang menyamar sebagai LZNK</p>
-            <div class="row justify-content-center">
+            <div class="simulation-header text-center mb-5">
+                <div class="simulation-badge">🎯 Latihan Interaktif</div>
+                <h2 class="simulation-title">Uji Kemahiran Mengesan Phishing</h2>
+                <p class="simulation-subtitle">Cuba kenal pasti 5 e-mel berbeza - mana yang phishing, mana yang sah?</p>
+                        </div>
+            
+            <!-- User Info Display (Hidden by default, shown when data is available) -->
+            <div class="user-info-display text-center mb-4" style="display: none;">
+                <div class="alert alert-info">
+                    <h6><i class="bi bi-person-circle"></i> Maklumat Pengguna</h6>
+                    <p class="mb-1"><strong>Nama:</strong> <span class="user-name">Loading...</span></p>
+                    <p class="mb-0"><strong>E-mel:</strong> <span class="user-email">Loading...</span></p>
+                </div>
+            </div>
+            
+            <!-- Start Button (Hidden - Auto Start) -->
+            <div class="text-center mb-4" style="display: none;">
+                <button id="startSimulationBtn" class="btn btn-primary btn-lg" onclick="startPhishingSimulation()">
+                    <i class="bi bi-play-circle-fill"></i> Mula Simulasi Phishing
+                </button>
+            </div>
+            
+            <!-- Simulation Progress Bar -->
+            <div class="row justify-content-center mb-4">
                 <div class="col-lg-8">
-                    <div class="card simulator-card">
-                        <div class="card-body">
-                            <div class="email-simulator border rounded p-3 mb-3">
-                                <div class="email-header border-bottom pb-2 mb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <strong>Dari:</strong> info@zakatkedah-update.com
-                                            <br>
-                                            <strong>Kepada:</strong> <span id="userEmail">{{.Email}}</span>
-                                            <br>
-                                            <strong>Subjek:</strong> SEGERA: Pembayaran Zakat Anda Tertunggak
+                    <div class="simulation-progress">
+                        <div class="progress mb-3">
+                            <div id="simulationProgressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
                                         </div>
-                                        <div>
-                                            <i class="bi bi-envelope-fill text-primary fs-3"></i>
+                        <div class="text-center">
+                            <span id="simulationProgressText" class="fw-bold">Simulasi 0/5</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="email-content">
-                                    <p>Assalamualaikum w.b.t</p>
-                                    <p>Kepada <span id="userName">{{.FirstName}}</span>,</p>
-        <p>NOTIS PENTING: Pembayaran zakat anda untuk tahun 2023 masih tertunggak. Sila jelaskan dengan segera untuk mengelakkan denda.</p>
-                                    <p>Butiran Pembayaran Tertunggak:</p>
-                                    <ul>
-                                        <li>Zakat Pendapatan: RM 2,500</li>
-                                        <li>Denda Lewat: RM 250</li>
-                                        <li>Jumlah: RM 2,750</li>
-                                    </ul>
-                                    <p>Sila klik butang di bawah untuk membuat pembayaran segera:</p>
-                                    <a href="javascript:void(0)" onclick="showPhishingAlert()" class="btn btn-danger mb-3">BAYAR SEKARANG</a>
-                                    <p class="text-danger"><small>*Pembayaran perlu dijelaskan dalam tempoh 24 jam</small></p>
-                                    <hr>
-                                    <p class="mb-0"><small>Lembaga Zakat Negri Kedah<br>Tingkat 1, Menara Zakat<br>Jalan Telok Wanjah</small></p>
+                                </div>
+
+            <!-- Simulation Container -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div id="simulationContainer" class="card simulator-card">
+                        <div class="card-body">
+                            <!-- Email Display Area -->
+                            <div id="emailDisplayArea" class="email-display-area">
+                                <!-- Email content will be dynamically loaded here -->
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div id="actionButtons" class="action-buttons mt-4 text-center">
+                                <button id="phishingBtn" class="btn btn-danger btn-lg me-3" onclick="handleUserAction('phishing')">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> Ini E-mel Phishing
+                                </button>
+                                <button id="clickBtn" class="btn btn-success btn-lg" onclick="handleUserAction('click')">
+                                    <i class="bi bi-check-circle-fill"></i> Ini E-mel Sah
+                                </button>
+                                </div>
+
+                            <!-- Feedback Area -->
+                            <div id="feedbackArea" class="feedback-area mt-4" style="display: none;">
+                                <!-- Feedback content will be dynamically loaded here -->
+                                </div>
+
+                            <!-- Next Button -->
+                            <div id="nextButtonArea" class="next-button-area mt-4 text-center" style="display: none;">
+                                <button id="nextBtn" class="btn btn-primary btn-lg" onclick="nextSimulation()">
+                                    <i class="bi bi-arrow-right-circle-fill"></i> Simulasi Seterusnya
+                                </button>
+                                </div>
                                 </div>
                             </div>
-                            <div class="simulator-controls">
-                                <p class="mb-3 fw-bold">Adakah ini e-mel phishing? Kenalpasti tanda-tanda phishing:</p>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="check1">
-                                    <label class="form-check-label" for="check1">
-                                        Domain e-mel mencurigakan (zakatkedah-update.com)
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="check2">
-                                    <label class="form-check-label" for="check2">
-                                        Mesej mendesak dan mengugut dengan denda
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" id="check3">
-                                    <label class="form-check-label" for="check3">
-                                        Alamat pejabat tidak tepat
-                                    </label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="check4">
-                                    <label class="form-check-label" for="check4">
-                                        LZNK tidak mengenakan denda lewat untuk zakat
-                                    </label>
-                                </div>
-                            <div class="text-center mt-4">
-                                <button class="btn btn-danger me-2" onclick="checkSimulation('phishing')">Ini E-mel Phishing</button>
-                                <button class="btn btn-success" onclick="checkSimulation('safe')">Ini E-mel Selamat</button>
                             </div>
-                            </div>
-                            <div id="simulationResult" class="mt-3" style="display: none;">
-                                <div id="correctPhishingResult" class="alert alert-success" style="display: none;">
-                                    <h4 class="alert-heading"><i class="bi bi-check-circle-fill"></i> Betul!</h4>
-                                    <p>Ini adalah e-mel phishing. Tanda-tanda phishing yang boleh dikesan:</p>
-                                    <ul>
-                                        <li>Domain e-mel bukan dari @zakatkedah.com.my</li>
-                                        <li>Mesej mendesak dengan ancaman denda</li>
-                                        <li>LZNK tidak mengenakan denda untuk pembayaran zakat</li>
-                                        <li>Alamat pejabat tidak tepat</li>
-                                        <li>Butang "BAYAR SEKARANG" yang mencurigakan</li>
-                                    </ul>
-                                    <hr>
-                                    <p class="mb-0">Jika anda menerima e-mel seperti ini, sila laporkan kepada Divisyen Keselamatan Siber LZNK.</p>
                                 </div>
-                                <div id="incorrectSafeResult" class="alert alert-danger" style="display: none;">
-                                    <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill"></i> Maaf, Jawapan Kurang Tepat</h4>
-                                    <p>Ini sebenarnya adalah e-mel phishing. Mari kita lihat kenapa:</p>
-                                    <ul>
-                                        <li>Domain e-mel mencurigakan: info@zakatkedah-update.com (bukan domain rasmi LZNK)</li>
-                                        <li>Taktik menakutkan pengguna dengan denda (LZNK tidak mengenakan denda)</li>
-                                        <li>Mesej mendesak untuk membuat pembayaran segera</li>
-                                        <li>Pautan mencurigakan untuk pembayaran</li>
-                                    </ul>
-                                    <hr>
-                                    <p class="mb-0">Tip: Sentiasa periksa domain e-mel dan elakkan mengklik pautan yang mencurigakan.</p>
+
+            <!-- Results Summary Modal -->
+            <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title" id="resultsModalLabel">
+                                <i class="bi bi-trophy-fill"></i> Keputusan Simulasi Phishing
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+                        <div class="modal-body">
+                            <div id="resultsContent">
+                                <!-- Results content will be dynamically loaded here -->
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-primary" onclick="restartSimulation()">Mulakan Semula</button>
                         </div>
                     </div>
                 </div>
@@ -2035,27 +2485,28 @@
         <div class="row">
             <div class="col-md-6">
                 <img src="https://phishing-campaign-c13d5.web.app/assets/logo2.png" alt="Logo LZNK" class="footer-logo">
-                <h4>PEJABAT UTAMA</h4>
+                <h4>DIVISYEN KESELAMATAN SIBER</h4>
                 <h5>LEMBAGA ZAKAT NEGERI KEDAH</h5>
                 <div class="footer-address">
                     <span class="footer-icon"><i class="bi bi-geo-alt"></i></span>
-                    <p>Menara Zakat, Jalan Teluk Wanjah<br>
+                    <p>Aras 7, Menara Zakat<br>
+                    Jalan Teluk Wanjah<br>
                     05200 Alor Setar, Kedah</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <h4>HUBUNGI KAMI</h4>
                 <div class="contact-info">
-                    <p><span class="footer-icon"><i class="bi bi-telephone"></i></span> Talian Bebas Tol: <strong>1800-88-1740</strong></p>
-                    <p><span class="footer-icon"><i class="bi bi-printer"></i></span> Faks: <strong>04-731 6280</strong></p>
-                    <p><span class="footer-icon"><i class="bi bi-exclamation-circle"></i></span> Untuk sebarang aduan:</p>
-                    <p><a href="https://zakatkedah.spab.gov.my/eApps/system/index.do">https://zakatkedah.spab.gov.my/eApps/system/index.do</a></p>
+                    <p><span class="footer-icon"><i class="bi bi-telephone"></i></span> Aduan DKS: <strong>013-599 1740</strong></p>
+                    <p><span class="footer-icon"><i class="bi bi-info-circle"></i></span> Untuk aduan/pengesahan keselamatan siber</p>
+                    <p><span class="footer-icon"><i class="bi bi-clock"></i></span> Waktu Operasi: <strong>Ahad–Khamis, 8:00 pagi – 5:00 petang</strong></p>
+                    <p><span class="footer-icon"><i class="bi bi-exclamation-triangle"></i></span> Jangan kongsi kata laluan atau OTP semasa panggilan!!!</p>
                 </div>
             </div>
         </div>
         <div class="row footer-bottom">
             <div class="col-12 text-center">
-                <p>&copy; 2023 Lembaga Zakat Negeri Kedah. Hak Cipta Terpelihara.</p>
+                <p>&copy; 2025 Lembaga Zakat Negeri Kedah. Hak Cipta Terpelihara.</p>
             </div>
         </div>
     </div>
@@ -2063,11 +2514,98 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR2VfCf8nZsJx0KkFJ05H_WLyTYlAl1YA",
+            authDomain: "phishing-campaign-c13d5.firebaseapp.com",
+            projectId: "phishing-campaign-c13d5",
+            storageBucket: "phishing-campaign-c13d5.firebasestorage.app",
+            messagingSenderId: "124386109623",
+            appId: "1:124386109623:web:4355f6f2fded9ccdf0c532",
+            measurementId: "G-5E53FJDB5T"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const analytics = getAnalytics(app);
+
+        // Make Firebase functions globally available
+        window.firebaseDB = db;
+        
+        // Check if simulation already exists for this campaign (campaignId-only)
+        window.checkExistingSimulation = async function(campaignId, email) {
+            try {
+                const docRef = doc(db, "phishing_simulations", campaignId);
+                const snap = await getDoc(docRef);
+                return snap.exists();
+            } catch (error) {
+                console.error("Error checking existing simulation: ", error);
+                return false;
+            }
+        };
+        
+        // Save simulation data under doc id = campaignId, remove createdAt, add templateName
+        window.addSimulationData = async function(simulationData) {
+            try {
+                const alreadyExists = await window.checkExistingSimulation(simulationData.campaignId, simulationData.email);
+                if (alreadyExists) {
+                    console.log("⚠️ Campaign already has a simulation record. Skipping save.");
+                    return "duplicate";
+                }
+
+                const docRef = doc(db, "phishing_simulations", simulationData.campaignId);
+                await setDoc(docRef, {
+                    campaignId: simulationData.campaignId,
+                    email: simulationData.email,
+                    firstName: simulationData.firstName,
+                    lastName: simulationData.lastName,
+                    correctAnswers: simulationData.correctAnswers,
+                    wrongAnswers: simulationData.wrongAnswers,
+                    totalCorrectAnswers: simulationData.totalCorrectAnswers,
+                    time: simulationData.time,
+                    userAgent: simulationData.userAgent,
+                    templateName: simulationData.templateName || "",
+                    timestamp: serverTimestamp()
+                }, { merge: true });
+
+                console.log("✅ Simulation data saved with ID: ", simulationData.campaignId);
+                return simulationData.campaignId;
+            } catch (error) {
+                console.error("❌ Error saving simulation data: ", error);
+                return null;
+            }
+        };
+    </script>
     <script>
         function showPhishingAlert() {
+            // Get user data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const firstName = urlParams.get('fname') || 'Unknown';
+            const email = urlParams.get('email') || 'user@lznk.com.my';
+            
             Swal.fire({
-                title: '🎣 Anda Telah di-Phishing!',
-                text: 'Ini adalah simulasi serangan phishing. Sentiasa berwaspada dengan pautan yang anda klik.',
+                title: `🎣 ${firstName}, Anda Telah di-Phishing!`,
+                html: `
+                    <div style="text-align: left; padding: 20px;">
+                        <p><strong>E-mel:</strong> ${email}</p>
+                        <p>Ini adalah simulasi serangan phishing. Sentiasa berwaspada dengan pautan yang anda klik.</p>
+                        <p><strong>Tips Keselamatan:</strong></p>
+                        <ul style="text-align: left;">
+                            <li>Periksa URL sebelum klik pautan</li>
+                            <li>Jangan berikan maklumat peribadi melalui e-mel</li>
+                            <li>Hubungi organisasi secara langsung jika ragu-ragu</li>
+                        </ul>
+                    </div>
+                `,
                 width: 600,
                 padding: "3em",
                 color: "#dc3545",
@@ -2085,27 +2623,14 @@
             });
         }
 
-        function showUnderConstruction() {
-            Swal.fire({
-                title: '🚧 Under Construction',
-                text: 'Halaman ini sedang dalam pembangunan. Sila cuba sebentar lagi.',
-                icon: 'info',
-                confirmButtonText: 'Fahami',
-                confirmButtonColor: '#00573F',
-                background: '#fff',
-                customClass: {
-                    popup: 'animated fadeInDown'
-                }
-            });
-        }
 
-        // Get URL parameters for GoPhish tracking
+        // Get URL parameters for GoPhish tracking (legacy code - now handled by PhishingSimulation class)
         const urlParams = new URLSearchParams(window.location.search);
         const rid = urlParams.get('rid') || urlParams.get('RId');
         let firstName = urlParams.get('fname') || 'Unknown';
         
         // GoPhish tracking pixel
-        const GOPHISH_HOST = 'https://nursing-jimmy-spice-rachel.trycloudflare.com';
+        const GOPHISH_HOST = 'https://cowboy-relaxation-data-sole.trycloudflare.com';
         
         // Create tracking pixel for GoPhish
         if (rid) {
@@ -2120,6 +2645,10 @@
             // Get user name from GoPhish URL parameter or use default
             let firstName = urlParams.get('fname') || 'Unknown';
             document.getElementById('userName').textContent = firstName;
+            
+            // Don't update user-name spans here - let the class handle it
+            // const userNameElements = document.querySelectorAll('.user-name');
+            // userNameElements.forEach(el => el.textContent = firstName);
             
             // Show the modal after a short delay
             setTimeout(function() {
@@ -2149,177 +2678,1453 @@
             });
         });
         
-        // Quiz functionality
-        function checkAnswers() {
-            const answers = {
-                q1: 'b', // Jawapan betul untuk soalan 1
-                q2: 'b', // Jawapan betul untuk soalan 2
-                q3: 'b', // Jawapan betul untuk soalan 3
-                q4: 'b', // Jawapan betul untuk soalan 4
-                q5: 'a', // Jawapan betul untuk soalan 5
-                q6: 'b', // Jawapan betul untuk soalan 6
-                q7: 'b'  // Jawapan betul untuk soalan 7
+    </script>
+    <script>
+    // Advanced Phishing Simulation System
+    const APPS_SCRIPT_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzFC0lX10jbkSP0KKwI0Imlj8UX5Q9eYJj79yIRVmR9b3hhJELYnpzmOvEwhAVQF8Dt/exec';
+class PhishingSimulation {
+        constructor() {
+            this.currentSimulation = 0;
+            this.totalSimulations = 5;
+            this.userResponses = [];
+            this.simulationData = this.initializeSimulationData();
+            
+            // Extract data from URL parameters
+            this.urlParams = this.getUrlParameters();
+            this.userEmail = this.urlParams.email || 'user@lznk.com.my';
+            this.firstName = this.urlParams.fname || 'Unknown';
+            this.lastName = this.urlParams.lname || '';
+            this.userName = (this.firstName || 'Unknown') + (this.lastName ? ' ' + this.lastName : '');
+            
+            // Ensure firstName is never undefined
+            if (!this.firstName || this.firstName === 'undefined') {
+                this.firstName = 'Unknown';
+            }
+            this.campaignId = this.urlParams.rid || 'phishing_simulation_campaign';
+            
+            
+            // Update user display elements
+            this.updateUserDisplay();
+        }
+
+        /**
+         * Extract URL parameters from the current page URL
+         */
+        getUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const params = {};
+            
+            // Extract all parameters
+            for (const [key, value] of urlParams) {
+                params[key] = decodeURIComponent(value);
+            }
+            
+            console.log('URL Parameters extracted:', params);
+            console.log('Current URL:', window.location.href);
+            console.log('Search params:', window.location.search);
+            return params;
+        }
+
+        /**
+         * Update user display elements with extracted data
+         */
+        updateUserDisplay() {
+            // Update any user display elements in the HTML
+            const userEmailElements = document.querySelectorAll('.user-email');
+            const userNameElements = document.querySelectorAll('.user-name');
+            const firstNameElements = document.querySelectorAll('.first-name');
+            
+            console.log('updateUserDisplay called with:', {
+                firstName: this.firstName,
+                userName: this.userName,
+                userEmail: this.userEmail
+            });
+            
+            userEmailElements.forEach(el => el.textContent = this.userEmail || 'user@lznk.com.my');
+            userNameElements.forEach(el => el.textContent = this.userName || 'Unknown');
+            firstNameElements.forEach(el => el.textContent = this.firstName || 'Unknown');
+            
+            // Show user info display if we have valid data
+            const userInfoDisplay = document.querySelector('.user-info-display');
+            if (userInfoDisplay && (this.userEmail !== 'user@lznk.com.my' || this.firstName !== 'Unknown')) {
+                userInfoDisplay.style.display = 'block';
+            }
+            
+            console.log('User data updated:', {
+                email: this.userEmail,
+                firstName: this.firstName,
+                lastName: this.lastName,
+                userName: this.userName,
+                campaignId: this.campaignId
+            });
+        }
+
+        /**
+         * Initialize the 5 distinct phishing simulation scenarios
+         * Each scenario includes email content, correct action, and detailed feedback
+         */
+        initializeSimulationData() {
+            return [
+                {
+                    id: 1,
+                    type: 'phishing',
+                    correctAction: 'phishing',
+                    title: 'E-mel Phishing - Tuntutan Denda Zakat',
+                    email: {
+                        from: 'info@zakatkedah-update.com',
+                        to: this.userEmail,
+                        subject: 'SEGERA: Pembayaran Zakat Anda Tertunggak',
+                        content: `
+                            <p>Assalamualaikum w.b.t</p>
+                            <p>Kepada ${this.firstName || 'Unknown'},</p>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>NOTIS PENTING:</strong> Pembayaran zakat anda untuk tahun 2023 masih tertunggak. Sila jelaskan dengan segera untuk mengelakkan denda.
+                            </div>
+                            
+                            <p><strong>Butiran Pembayaran Tertunggak:</strong></p>
+                            <ul>
+                                <li>Zakat Pendapatan: RM 2,500</li>
+                                <li>Denda Lewat: RM 250</li>
+                                <li>Jumlah: RM 2,750</li>
+                            </ul>
+                            
+                            <p>Sila klik butang di bawah untuk membuat pembayaran segera:</p>
+                            <a href="javascript:void(0)" class="email-cta-button urgent">BAYAR SEKARANG</a>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>⚠️ URGENT:</strong> Pembayaran perlu dijelaskan dalam tempoh 24 jam untuk mengelakkan denda tambahan.
+                            </div>
+                            
+                            <div class="email-signature">
+                                <p><strong>Lembaga Zakat Negri Kedah</strong><br>
+                                Tingkat 1, Menara Zakat<br>
+                                Jalan Telok Wanjah<br>
+                                Alor Setar, Kedah</p>
+                            </div>
+                        `
+                    },
+                    feedback: {
+                        correct: {
+                            title: 'Betul! Ini adalah e-mel phishing.',
+                            explanation: 'Anda telah mengenalpasti tanda-tanda phishing dengan tepat.',
+                            tips: [
+                                'Domain e-mel bukan dari @zakatkedah.com.my',
+                                'Mesej mendesak dengan ancaman denda',
+                                'LZNK tidak mengenakan denda untuk pembayaran zakat',
+                                'Alamat pejabat tidak tepat',
+                                'Ejaan salah: "Negri" sepatutnya "Negeri" dalam emel footer'
+                            ]
+                        },
+                        incorrect: {
+                            title: 'Ini sebenarnya adalah e-mel phishing.',
+                            explanation: 'Mari kita lihat tanda-tanda yang menunjukkan ini adalah phishing.',
+                            tips: [
+                                'Domain e-mel mencurigakan: info@zakatkedah-update.com',
+                                'Taktik menakutkan pengguna dengan denda',
+                                'Mesej mendesak untuk membuat pembayaran segera',
+                                'LZNK tidak mengenakan denda lewat untuk zakat',
+                                'Ejaan salah: "Negri" sepatutnya "Negeri" dalam emel footer'
+                            ]
+                        }
+                    }
+                },
+                {
+                    id: 2,
+                    type: 'legitimate',
+                    correctAction: 'click',
+                    title: 'E-mel Sah - Maklumat Pengemaskinian Sistem',
+                    email: {
+                        from: 'sistem@zakatkedah.com.my',
+                        to: this.userEmail,
+                        subject: 'Pengemaskinian Sistem LZNK - 15 Januari 2025',
+                        content: `
+                            <p>Assalamualaikum w.b.t</p>
+                            <p>Kepada ${this.firstName || 'Unknown'},</p>
+                            
+                            <div class="email-info-box">
+                                <strong>Pemberitahuan Sistem:</strong> Kami ingin memaklumkan bahawa sistem LZNK akan menjalani pengemaskinian pada <strong>15 Januari 2025, jam 2:00 AM - 6:00 AM</strong>.
+                            </div>
+                            
+                            <p><strong>Perkara yang perlu diketahui:</strong></p>
+                            <ul>
+                                <li>Sistem akan tidak dapat diakses semasa tempoh pengemaskinian</li>
+                                <li>Semua data akan disimpan dengan selamat</li>
+                                <li>Fungsi baru akan ditambah untuk kemudahan pengguna</li>
+                                <li>Jika ada kecemasan, hubungi talian bantuan: 1800-88-1740</li>
+                            </ul>
+                            
+                            <p>Terima kasih atas kesabaran anda.</p>
+                            <a href="javascript:void(0)" class="email-cta-button normal">LIHAT STATUS SISTEM</a>
+                            
+                            <div class="email-signature">
+                                <p><strong>Divisyen Teknologi Maklumat</strong><br>
+                                <strong>Lembaga Zakat Negeri Kedah</strong><br>
+                                Menara Zakat, Jalan Teluk Wanjah<br>
+                                05200 Alor Setar, Kedah<br>
+                                Tel: 04-731 6280</p>
+                            </div>
+                        `
+                    },
+                    feedback: {
+                        correct: {
+                            title: 'Betul! Ini adalah e-mel sah.',
+                            explanation: 'Anda telah mengenalpasti e-mel sah dengan tepat.',
+                            tips: [
+                                'Domain e-mel rasmi: sistem@zakatkedah.com.my',
+                                'Maklumat yang jelas dan tidak mendesak',
+                                'Alamat pejabat yang tepat',
+                                'Nombor telefon rasmi disediakan',
+                                'Pautan menggunakan HTTPS (selamat) - menunjukkan laman web yang dipercayai'
+                            ]
+                        },
+                        incorrect: {
+                            title: 'Ini sebenarnya adalah e-mel sah.',
+                            explanation: 'Mari kita lihat ciri-ciri e-mel sah ini.',
+                            tips: [
+                                'Domain e-mel rasmi LZNK',
+                                'Maklumat pengemaskinian sistem yang masuk akal',
+                                'Tidak ada permintaan maklumat peribadi',
+                                'Alamat dan nombor telefon yang tepat',
+                                'Pautan menggunakan HTTPS (selamat) - menunjukkan laman web yang dipercayai'
+                            ]
+                        }
+                    }
+                },
+                {
+                    id: 3,
+                    type: 'phishing',
+                    correctAction: 'phishing',
+                    title: 'E-mel Phishing - Tawaran Pinjaman Palsu',
+                    email: {
+                        from: 'pinjaman@lznk-loan.com',
+                        to: this.userEmail,
+                        subject: 'TAWARAN KHAS: Pinjaman Peribadi RM50,000 - Tiada Dokumen',
+                        content: `
+                            <p>Selamat sejahtera ${this.firstName || 'Unknown'},</p>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>🎉 PELUANG EMAS!</strong> LZNK menawarkan pinjaman peribadi khas untuk kakitangan.
+                            </div>
+                            
+                            <p><strong>Kelebihan pinjaman kami:</strong></p>
+                            <ul>
+                                <li>Jumlah pinjaman: RM10,000 - RM50,000</li>
+                                <li>Kadar faedah: 2.5% sahaja</li>
+                                <li>Tiada dokumen diperlukan</li>
+                                <li>Kelulusan dalam 24 jam</li>
+                                <li>Tiada cagaran</li>
+                            </ul>
+                            
+                            <p><strong>Untuk memohon, klik di bawah dan isi borang:</strong></p>
+                            <a href="javascript:void(0)" class="email-cta-button urgent">MOHON SEKARANG</a>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>⏰ TERHAD:</strong> Tawaran sah sehingga 31 Januari 2025 sahaja. Jangan terlepas peluang ini!
+                            </div>
+                            
+                            <div class="email-signature">
+                                <p><strong>Bahagian Pinjaman Kakitangan</strong><br>
+                                <strong>Lembaga Zakat Negeri Kedah</strong><br>
+                                Menara Zakat, Jalan Teluk Wanjah<br>
+                                Alor Setar, Kedah</p>
+                            </div>
+                        `
+                    },
+                    feedback: {
+                        correct: {
+                            title: 'Betul! Ini adalah e-mel phishing.',
+                            explanation: 'Anda telah mengenalpasti penipuan pinjaman palsu.',
+                            tips: [
+                                'Domain e-mel mencurigakan: pinjaman@lznk-loan.com',
+                                'Tawaran yang terlalu bagus untuk dipercayai',
+                                'LZNK tidak menawarkan pinjaman peribadi',
+                                'Tiada dokumen = tanda penipuan',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS'
+                            ]
+                        },
+                        incorrect: {
+                            title: 'Ini sebenarnya adalah e-mel phishing.',
+                            explanation: 'Mari kita lihat tanda-tanda penipuan pinjaman.',
+                            tips: [
+                                'Domain e-mel palsu: lznk-loan.com (bukan zakatkedah.com.my)',
+                                'Tawaran pinjaman tanpa dokumen adalah penipuan',
+                                'LZNK tidak menawarkan pinjaman peribadi',
+                                'Kadar faedah terlalu rendah untuk dipercayai',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS'
+                            ]
+                        }
+                    }
+                },
+                {
+                    id: 4,
+                    type: 'phishing',
+                    correctAction: 'phishing',
+                    title: 'E-mel Phishing - Jemputan Kursus Keselamatan Siber Palsu',
+                    email: {
+                        from: 'keselamatan@zakatkedah.com.my',
+                        to: this.userEmail,
+                        subject: 'Jemputan Kursus Keselamatan Siber - 20 Februari 2025',
+                        content: `
+                            <p>Assalamualaikum w.b.t</p>
+                            <p>Kepada ${this.firstName || 'Unknown'},</p>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>🎓 Jemputan Program Latihan:</strong> Divisyen Keselamatan Siber LZNK dengan sukacitanya menjemput anda menghadiri Kursus Kesedaran Keselamatan Siber 2025.
+                            </div>
+                            
+                            <p><strong>Butiran Kursus:</strong></p>
+                            <ul>
+                                <li><strong>Tarikh:</strong> 20 Februari 2025 (Selasa)</li>
+                                <li><strong>Masa:</strong> 9:00 AM - 5:00 PM</li>
+                                <li><strong>Tempat:</strong> Dewan Utama, Menara Zakat</li>
+                                <li><strong>Topik:</strong> Pengenalan kepada Keselamatan Siber, Pengesanan Phishing, Pengurusan Kata Laluan</li>
+                            </ul>
+                            
+                            <p><strong>Untuk pendaftaran, sila hubungi:</strong><br>
+                            En. Ahmad: 04-731 6280 (samb. 1234)<br>
+                            atau e-mel: ahmad@zakatkedah.com.my</p>
+                            
+                            <p>Kursus ini adalah wajib untuk semua kakitangan. Sila sahkan kehadiran anda sebelum 15 Februari 2025.</p>
+                            <a href="javascript:void(0)" class="email-cta-button urgent">DAFTAR KURSUS</a>
+                            
+                            <div class="email-signature">
+                                <p><strong>Divisyen Keselamatan Siber</strong><br>
+                                <strong>Lembaga Zakat Negeri Kedah</strong><br>
+                                Menara Zakat, Jalan Teluk Wanjah<br>
+                                05200 Alor Setar, Kedah</p>
+                            </div>
+                        `
+                    },
+                    feedback: {
+                        correct: {
+                            title: 'Betul! Ini adalah e-mel phishing.',
+                            explanation: 'Anda telah mengenalpasti penipuan kursus palsu.',
+                            tips: [
+                                'En. Ahmad bukan kakitangan Divisyen Keselamatan Siber yang sebenar',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS',
+                                'Maklumat kontak yang tidak dapat disahkan',
+                                'Jemputan kursus yang mencurigakan dengan nama kontak palsu',
+                                'Nombor telefon extension (1234) tidak konsisten dengan sistem LZNK'
+                            ]
+                        },
+                        incorrect: {
+                            title: 'Tidak tepat. Ini sebenarnya e-mel phishing.',
+                            explanation: 'Mari kita lihat tanda-tanda penipuan dalam e-mel ini.',
+                            tips: [
+                                'En. Ahmad bukan kakitangan Divisyen Keselamatan Siber yang sebenar',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS',
+                                'Maklumat kontak yang tidak dapat disahkan',
+                                'Jemputan kursus yang mencurigakan dengan nama kontak palsu',
+                                'Nombor telefon extension (1234) tidak konsisten dengan sistem LZNK'
+                            ]
+                        }
+                    }
+                },
+                {
+                    id: 5,
+                    type: 'phishing',
+                    correctAction: 'phishing',
+                    title: 'E-mel Phishing - Pemberitahuan Keselamatan Akaun',
+                    email: {
+                        from: 'security@zakatkedah-security.com',
+                        to: this.userEmail,
+                        subject: 'AMARAN: Aktiviti Mencurigakan Dikesan pada Akaun Anda',
+                        content: `
+                            <p>Assalamualaikum ${this.firstName || 'Unknown'},</p>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>🚨 AMARAN KESELAMATAN:</strong> Sistem keselamatan kami telah mengesan aktiviti mencurigakan pada akaun anda.
+                            </div>
+                            
+                            <p><strong>Aktiviti yang dikesan:</strong></p>
+                            <ul>
+                                <li>Log masuk dari IP: 192.168.1.100 (Malaysia)</li>
+                                <li>Tarikh: ${new Date().toLocaleDateString('ms-MY')}</li>
+                                <li>Masa: ${new Date().toLocaleTimeString('ms-MY')}</li>
+                                <li>Lokasi: Kuala Lumpur</li>
+                            </ul>
+                            
+                            <p><strong>Jika ini bukan anda, sila klik di bawah untuk mengesahkan identiti:</strong></p>
+                            <a href="javascript:void(0)" class="email-cta-button urgent">VERIFY SEKARANG</a>
+                            
+                            <div class="email-urgent-notice">
+                                <strong>⚠️ AMARAN:</strong> Akaun anda akan disekat dalam 24 jam jika tidak disahkan!
+                            </div>
+                            
+                            <p><small>Jika anda tidak melakukan aktiviti ini, sila hubungi kami dengan segera.</small></p>
+                            
+                            <div class="email-signature">
+                                <p><strong>Tim Keselamatan Siber</strong><br>
+                                <strong>Lembaga Zakat Negeri Kedah</strong><br>
+                                support@zakatkedah-security.com</p>
+                            </div>
+                        `
+                    },
+                    feedback: {
+                        correct: {
+                            title: 'Betul! Ini adalah e-mel phishing.',
+                            explanation: 'Anda telah mengenalpasti penipuan keselamatan palsu.',
+                            tips: [
+                                'Domain e-mel mencurigakan: zakatkedah-security.com',
+                                'Taktik menakutkan dengan ancaman sekatan akaun',
+                                'IP address palsu (192.168.1.100 adalah IP tempatan)',
+                                'LZNK tidak menghantar e-mel keselamatan seperti ini',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS'
+                            ]
+                        },
+                        incorrect: {
+                            title: 'Ini sebenarnya adalah e-mel phishing.',
+                            explanation: 'Mari kita lihat tanda-tanda penipuan keselamatan.',
+                            tips: [
+                                'Domain e-mel palsu: zakatkedah-security.com',
+                                'Taktik menakutkan pengguna dengan ancaman',
+                                'IP address palsu (192.168.1.100 tidak boleh diakses dari luar)',
+                                'LZNK tidak meminta pengesahan identiti melalui e-mel',
+                                'Pautan menggunakan HTTP (tidak selamat) - laman web rasmi menggunakan HTTPS'
+                            ]
+                        }
+                    }
+                }
+            ];
+        }
+
+        /**
+         * Start the phishing simulation
+         */
+        startSimulation() {
+            this.currentSimulation = 0;
+            this.userResponses = [];
+            this.updateProgress();
+            this.displayCurrentSimulation();
+        }
+
+        /**
+         * Display the current simulation email
+         */
+        displayCurrentSimulation() {
+            const simulation = this.simulationData[this.currentSimulation];
+            const emailDisplayArea = document.getElementById('emailDisplayArea');
+            const actionButtons = document.getElementById('actionButtons');
+            const feedbackArea = document.getElementById('feedbackArea');
+            const nextButtonArea = document.getElementById('nextButtonArea');
+
+            // Hide feedback and next button
+            feedbackArea.style.display = 'none';
+            nextButtonArea.style.display = 'none';
+
+            // Show action buttons
+            actionButtons.style.display = 'flex';
+
+            // Display email content with realistic email interface
+            // Replace user data placeholders in email content
+            let emailContent = simulation.email.content;
+            
+            console.log('Before replacement:', {
+                userEmail: this.userEmail,
+                firstName: this.firstName,
+                userName: this.userName,
+                originalContent: emailContent.substring(0, 200) + '...'
+            });
+            
+            emailContent = emailContent.replace(/\${this\.userEmail}/g, this.userEmail);
+            emailContent = emailContent.replace(/\${this\.firstName}/g, this.firstName || 'Unknown');
+            emailContent = emailContent.replace(/\${this\.userName}/g, this.userName);
+            
+            console.log('After replacement:', {
+                userEmail: this.userEmail,
+                firstName: this.firstName,
+                replacedContent: emailContent.substring(0, 200) + '...'
+            });
+            
+            emailDisplayArea.innerHTML = `
+                <div class="email-header">
+                    <div class="email-from"><strong>From:</strong> ${simulation.email.from}</div>
+                    <div class="email-to"><strong>To:</strong> ${this.userEmail}</div>
+                </div>
+                <div class="email-subject-line">
+                    ${simulation.email.subject}
+                </div>
+                <div class="email-meta">
+                    <div class="email-date">${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} at ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                    <div class="email-priority">${simulation.type === 'phishing' ? 'High Priority' : 'Normal'}</div>
+                </div>
+                <div class="email-content">
+                    ${emailContent}
+                </div>
+            `;
+
+            // Add hover tooltips to email buttons
+            this.addEmailTooltips(simulation);
+
+            // Add animation
+            emailDisplayArea.style.opacity = '0';
+            setTimeout(() => {
+                emailDisplayArea.style.opacity = '1';
+            }, 100);
+        }
+
+        /**
+         * Add hover tooltips to email action buttons showing links
+         */
+        addEmailTooltips(simulation) {
+            // Wait for email content to be rendered
+            setTimeout(() => {
+                const emailLinks = this.getEmailLinks(simulation);
+                
+                if (emailLinks.length > 0) {
+                    // Find all email action buttons in the email content
+                    const emailButtons = document.querySelectorAll('#emailDisplayArea .email-cta-button');
+                    
+                    emailButtons.forEach((button, index) => {
+                        if (emailLinks[index]) {
+                            const link = emailLinks[index];
+                            
+                            // Add tooltip with link information
+                            button.setAttribute('data-bs-toggle', 'tooltip');
+                            button.setAttribute('data-bs-placement', 'top');
+                            button.setAttribute('data-bs-html', 'true');
+                            button.setAttribute('title', `
+                                <div class="tooltip-content">
+                                    <strong>🔗 Pautan yang akan dibuka:</strong><br>
+                                    <span class="email-url">${link.url}</span><br>
+                                    <small class="tooltip-note">Ini hanya simulasi. Dalam situasi sebenar, periksa link di hujung bawah sebelah kiri skrin sebelum klik.</small>
+                                </div>
+                            `);
+                            
+                            // Add visual indicator (same for all buttons to not give away answer)
+                            button.style.cursor = 'help';
+                            button.style.border = '2px dashed #28a745';
+                            
+                            // Initialize tooltip
+                            new bootstrap.Tooltip(button);
+                        }
+                    });
+                }
+            }, 200);
+        }
+
+        /**
+         * Get email links for each scenario
+         */
+        getEmailLinks(simulation) {
+            switch (simulation.id) {
+                case 1: // Zakat payment scam
+                    return [{
+                        url: 'http://zakatkedah-payment-secure.com/verify'
+                    }];
+                case 2: // System maintenance (legitimate)
+                    return [{
+                        url: 'https://www.zakatkedah.com.my/status'
+                    }];
+                case 3: // Fake loan offer
+                    return [{
+                        url: 'http://lznk-loan-apply.com/application'
+                    }];
+                case 4: // Cybersecurity training (phishing)
+                    return [{
+                        url: 'http://www.zakatkedah.com.my/training/register'
+                    }];
+                case 5: // Fake security alert
+                    return [{
+                        url: 'http://zakatkedah-security-verify.com/account'
+                    }];
+                default:
+                    return [];
+            }
+        }
+
+        /**
+         * Handle user action (phishing, click, save)
+         */
+        handleUserAction(action) {
+            const simulation = this.simulationData[this.currentSimulation];
+            const isCorrect = action === simulation.correctAction;
+
+            // Store user response
+            const userResponse = {
+                simulationId: simulation.id,
+                userAction: action,
+                correctAction: simulation.correctAction,
+                isCorrect: isCorrect,
+                type: simulation.type
             };
-            
-            let score = 0;
-            let feedback = '';
-            let totalQuestions = Object.keys(answers).length;
-            
-            // Semak soalan 1
-            const q1Selected = document.querySelector('input[name="q1"]:checked');
-            if (q1Selected) {
-                if (q1Selected.value === answers.q1) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 1: Betul! E-mel yang meminta kata laluan adalah tanda phishing.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 1: Salah. E-mel yang meminta kata laluan adalah tanda phishing.</p>';
-                }
+            this.userResponses.push(userResponse);
+
+
+            // Show feedback
+            this.showFeedback(isCorrect, simulation);
+
+            // Hide action buttons
+            document.getElementById('actionButtons').style.display = 'none';
+
+            // Show next button or results
+            if (this.currentSimulation < this.totalSimulations - 1) {
+                document.getElementById('nextButtonArea').style.display = 'block';
             } else {
-                feedback += '<p class="text-warning">Soalan 1: Tiada jawapan dipilih.</p>';
+                // All simulations completed
+                setTimeout(() => {
+                    this.showResults();
+                }, 3000);
             }
-            
-            // Semak soalan 2
-            const q2Selected = document.querySelector('input[name="q2"]:checked');
-            if (q2Selected) {
-                if (q2Selected.value === answers.q2) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 2: Betul! Anda perlu melaporkan e-mel yang mencurigakan.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 2: Salah. Anda perlu melaporkan e-mel yang mencurigakan.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 2: Tiada jawapan dipilih.</p>';
+        }
+
+        /**
+         * Show feedback for user action
+         */
+        showFeedback(isCorrect, simulation) {
+            const feedbackArea = document.getElementById('feedbackArea');
+            const feedback = isCorrect ? simulation.feedback.correct : simulation.feedback.incorrect;
+
+            feedbackArea.innerHTML = `
+                <div class="feedback-${isCorrect ? 'correct' : 'incorrect'}">
+                    <div class="feedback-icon">
+                        <i class="bi ${isCorrect ? 'bi-check-circle-fill text-success' : 'bi-exclamation-triangle-fill text-danger'}"></i>
+                    </div>
+                    <div class="feedback-title">${feedback.title}</div>
+                    <div class="feedback-explanation">${feedback.explanation}</div>
+                    <div class="feedback-tips">
+                        <h6><i class="bi bi-lightbulb-fill"></i> Tips Keselamatan:</h6>
+                        <ul>
+                            ${feedback.tips.map(tip => `<li>${tip}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            feedbackArea.style.display = 'block';
+            feedbackArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /**
+         * Move to next simulation
+         */
+        nextSimulation() {
+            this.currentSimulation++;
+            this.updateProgress();
+            this.displayCurrentSimulation();
+        }
+
+        /**
+         * Update progress bar and text
+         */
+        updateProgress() {
+            const progress = ((this.currentSimulation + 1) / this.totalSimulations) * 100;
+            document.getElementById('simulationProgressBar').style.width = progress + '%';
+            document.getElementById('simulationProgressText').textContent = `Simulasi ${this.currentSimulation + 1}/${this.totalSimulations}`;
+        }
+
+        /**
+         * Calculate user score and rating
+         */
+        calculateScore() {
+            const correctAnswers = this.userResponses.filter(response => response.isCorrect).length;
+            const percentage = Math.round((correctAnswers / this.totalSimulations) * 100);
+
+            let rating = '';
+            let ratingClass = '';
+            const stars = correctAnswers; // 0–5 stars directly
+
+            switch (correctAnswers) {
+                case 5:
+                    rating = 'Pakar Keselamatan Siber';
+                    ratingClass = 'text-success';
+                    break;
+                case 4:
+                    rating = 'Pengguna Berwaspada';
+                    ratingClass = 'text-info';
+                    break;
+                case 3:
+                    rating = 'Pengguna Biasa';
+                    ratingClass = 'text-warning';
+                    break;
+                case 2:
+                    rating = 'Berisiko Sederhana';
+                    ratingClass = 'text-warning';
+                    break;
+                case 1:
+                case 0:
+                default:
+                    rating = 'Berisiko Tinggi';
+                    ratingClass = 'text-danger';
+                    break;
             }
-            
-            // Semak soalan 3
-            const q3Selected = document.querySelector('input[name="q3"]:checked');
-            if (q3Selected) {
-                if (q3Selected.value === answers.q3) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 3: Betul! Smishing adalah serangan phishing melalui mesej SMS.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 3: Salah. Smishing adalah serangan phishing melalui mesej SMS.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 3: Tiada jawapan dipilih.</p>';
+
+            return {
+                correctAnswers,
+                totalSimulations: this.totalSimulations,
+                percentage,
+                rating,
+                ratingClass,
+                stars
+            };
+        }
+
+        /**
+         * Show final results
+         */
+        showResults() {
+            const score = this.calculateScore();
+            const resultsContent = document.getElementById('resultsContent');
+
+            // Emoji + animation based on exact correct answers (0–5)
+            let resultEmoji = '';
+            let animationClass = '';
+            switch (score.correctAnswers) {
+                case 5:
+                    resultEmoji = '🏆';
+                    animationClass = 'animate__animated animate__tada animate__infinite';
+                    break;
+                case 4:
+                    resultEmoji = '💪';
+                    animationClass = 'animate__animated animate__pulse animate__infinite';
+                    break;
+                case 3:
+                    resultEmoji = '🙂';
+                    animationClass = 'animate__animated animate__fadeIn';
+                    break;
+                case 2:
+                    resultEmoji = '😢';
+                    animationClass = 'animate__animated animate__heartBeat animate__infinite';
+                    break;
+                case 1:
+                    resultEmoji = '😬';
+                    animationClass = 'animate__animated animate__shakeX';
+                    break;
+                case 0:
+                default:
+                    resultEmoji = '😭';
+                    animationClass = 'animate__animated animate__shakeY';
+                    break;
             }
-            
-            // Semak soalan 4
-            const q4Selected = document.querySelector('input[name="q4"]:checked');
-            if (q4Selected) {
-                if (q4Selected.value === answers.q4) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 4: Betul! URL dengan protokol HTTPS dan ikon kunci biasanya menunjukkan laman web yang selamat.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 4: Salah. URL dengan protokol HTTPS dan ikon kunci biasanya menunjukkan laman web yang selamat.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 4: Tiada jawapan dipilih.</p>';
-            }
-            
-            // Semak soalan 5
-            const q5Selected = document.querySelector('input[name="q5"]:checked');
-            if (q5Selected) {
-                if (q5Selected.value === answers.q5) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 5: Betul! Whaling adalah serangan phishing yang menyasarkan eksekutif kanan atau pengurusan atasan.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 5: Salah. Whaling adalah serangan phishing yang menyasarkan eksekutif kanan atau pengurusan atasan.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 5: Tiada jawapan dipilih.</p>';
-            }
-            
-            // Semak soalan 6
-            const q6Selected = document.querySelector('input[name="q6"]:checked');
-            if (q6Selected) {
-                if (q6Selected.value === answers.q6) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 6: Betul! Anda perlu segera tukar kata laluan dan laporkan insiden.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 6: Salah. Anda perlu segera tukar kata laluan dan laporkan insiden.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 6: Tiada jawapan dipilih.</p>';
-            }
-            
-            // Semak soalan 7
-            const q7Selected = document.querySelector('input[name="q7"]:checked');
-            if (q7Selected) {
-                if (q7Selected.value === answers.q7) {
-                    score++;
-                    feedback += '<p class="text-success">Soalan 7: Betul! Anda perlu mengesahkan permintaan melalui saluran lain dan semak dengan Jabatan Kewangan.</p>';
-                } else {
-                    feedback += '<p class="text-danger">Soalan 7: Salah. Anda perlu mengesahkan permintaan melalui saluran lain dan semak dengan Jabatan Kewangan.</p>';
-                }
-            } else {
-                feedback += '<p class="text-warning">Soalan 7: Tiada jawapan dipilih.</p>';
-            }
-            
-            // Paparkan keputusan
-            const resultsDiv = document.getElementById('quizResults');
-            
-            // Tentukan kategori berdasarkan skor
-            let category = '';
-            let categoryClass = '';
-            
-            if (score === totalQuestions) {
-                category = 'Pakar Keselamatan Siber';
-                categoryClass = 'alert-success';
-            } else if (score >= Math.floor(totalQuestions * 0.7)) {
-                category = 'Pengguna Berwaspada';
-                categoryClass = 'alert-info';
-            } else if (score >= Math.floor(totalQuestions * 0.5)) {
-                category = 'Pengguna Biasa';
-                categoryClass = 'alert-warning';
-            } else {
-                category = 'Berisiko Tinggi';
-                categoryClass = 'alert-danger';
-            }
-            
-            resultsDiv.innerHTML = `
-                <div class="alert ${categoryClass}">
-                    <h4>Skor Anda: ${score}/${totalQuestions}</h4>
-                    <h5>Kategori: ${category}</h5>
-                    ${feedback}
-                    ${score === totalQuestions ? 
-                        '<p><strong>Tahniah!</strong> Anda telah menunjukkan kesedaran yang cemerlang tentang phishing.</p>' : 
-                        score >= Math.floor(totalQuestions * 0.7) ?
-                        '<p><strong>Bagus!</strong> Anda mempunyai kesedaran yang baik tentang phishing, tetapi masih ada ruang untuk peningkatan.</p>' :
-                        '<p><strong>Teruskan belajar!</strong> Kesedaran keselamatan siber adalah penting untuk melindungi diri dan organisasi.</p>'
+
+            resultsContent.innerHTML = `
+                <div class="results-summary">
+                    <h3>Keputusan Simulasi Phishing Anda</h3>
+                    <div class="results-emoji ${animationClass}" style="font-size: 3.2rem; display: inline-block; line-height: 1; margin: 0.75rem 0;">${resultEmoji}</div>
+                    <div class="results-score">${score.percentage}%</div>
+                    <div class="simulation-rating">
+                        ${Array.from({length: 5}, (_, i) =>
+                            `<span class="rating-star ${i < score.stars ? 'active' : ''}">★</span>`
+                        ).join('')}
+                    </div>
+                    <h4 class="${score.ratingClass}">${score.rating}</h4>
+                    <p>Anda mendapat <strong>${score.correctAnswers}/${score.totalSimulations}</strong> jawapan yang betul.</p>
+                </div>
+
+                <div class="results-breakdown">
+                    <h5>Perincian Jawapan:</h5>
+                    ${this.simulationData.map((simulation, index) => {
+                        const response = this.userResponses[index];
+                        const answered = Boolean(response);
+                        const isCorrect = answered ? response.isCorrect : false;
+                        return `
+                            <div class="result-item result-${isCorrect ? 'correct' : 'incorrect'}">
+                                <div>
+                                    <i class="result-icon bi ${isCorrect ? 'bi-check-circle-fill' : 'bi-x-circle-fill'}"></i>
+                                    <strong>Simulasi ${index + 1}:</strong> ${simulation.title}
+                                </div>
+                                <div>
+                                    <span class="badge ${answered ? (isCorrect ? 'bg-success' : 'bg-danger') : 'bg-secondary'}">
+                                        ${answered ? (isCorrect ? 'Betul' : 'Salah') : 'Tidak dijawab'}
+                                    </span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+
+                <div class="alert ${score.percentage >= 70 ? 'alert-success' : 'alert-warning'} mt-4">
+                    <h6><i class="bi bi-info-circle-fill"></i> Cadangan:</h6>
+                    ${score.percentage >= 70 ?
+                        '<p>Kemahiran anda dalam mengenalpasti phishing sangat baik! Teruskan mengamalkan langkah-langkah keselamatan ini dalam kehidupan seharian.</p>' :
+                        '<p>Pertimbangkan untuk mengikuti kursus keselamatan siber untuk meningkatkan kesedaran anda tentang ancaman phishing.</p>'
                     }
                 </div>
             `;
+
+            // No emoji in the modal header; keep header text as-is
+            const resultsModalLabel = document.getElementById('resultsModalLabel');
+            if (resultsModalLabel) {
+                resultsModalLabel.innerHTML = `<i class="bi bi-trophy-fill"></i> Keputusan Simulasi Phishing`;
+            }
+
+            // Add inline email status placeholder (gate by Firebase duplicate check)
+            resultsContent.insertAdjacentHTML('beforeend', `
+                <div id="emailSendStatus" class="alert alert-info mt-3">
+                    <i class="bi bi-search"></i> Menyemak rekod kempen untuk e-mel: <strong>${this.userEmail}</strong>
+                </div>
+            `);
+
+            // Save to Firebase and then decide whether to send email
+            this.saveSimulationDataToFirebase(score);
+
+            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+            resultsModal.show();
         }
-    </script>
-    <script>
-    // Tambah fungsi untuk set nilai awal
-    function initializeSimulator() {
-        // Set nilai default untuk email dan nama
-        document.getElementById('userEmail').textContent = '{{.Email}}';
-        document.getElementById('userName').textContent = '{{.FirstName}}';
+
+        /**
+         * Save simulation data to Firebase
+         * Gate email sending: only send when a new record is saved (not duplicate)
+         */
+        async saveSimulationDataToFirebase(score) {
+            try {
+                // Show "checking" status first
+                this.setEmailStatus('checking');
+
+                // Calculate correct and wrong answer simulation IDs
+                const correctAnswerIds = [];
+                const wrongAnswerIds = [];
+                this.userResponses.forEach((response) => {
+                    if (response.isCorrect) {
+                        correctAnswerIds.push(response.simulationId);
+                    } else {
+                        wrongAnswerIds.push(response.simulationId);
+                    }
+                });
+
+                // Prepare simplified simulation data for Firebase
+                const simulationData = {
+                    campaignId: this.campaignId,
+                    email: this.userEmail,
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    correctAnswers: correctAnswerIds,
+                    wrongAnswers: wrongAnswerIds,
+                    totalCorrectAnswers: correctAnswerIds.length,
+                    time: new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' }),
+                    userAgent: navigator.userAgent,
+                    templateName: this.urlParams.credential || 'Unknown'
+                };
+
+                // Save to Firebase if function is available
+                if (window.addSimulationData) {
+                    const docId = await window.addSimulationData(simulationData);
+                    if (docId === "duplicate") {
+                        console.log('⚠️ Duplicate simulation detected - data not saved');
+                        // Show message to user that they've already completed this campaign
+                        this.showDuplicateMessage();
+                        // Email: skip, since this campaign already completed
+                        this.setEmailStatus('skipped');
+                        // Mark this simulation as completed locally and re-evaluate the gate
+                        if (typeof window.markKempenGitSimulationDone === 'function') {
+                            window.markKempenGitSimulationDone();
+                        }
+                    } else if (docId) {
+                        console.log('✅ Simulation data saved to Firebase with ID:', docId);
+                        // Email: send only on first save
+                        this.sendResultsEmail(score);
+                        // Show success message to user
+                        this.showSuccessMessage();
+                        // Mark this simulation as completed locally and re-evaluate the gate
+                        if (typeof window.markKempenGitSimulationDone === 'function') {
+                            window.markKempenGitSimulationDone();
+                        }
+                    } else {
+                        // No docId returned - skip emailing to avoid multiple sends
+                        this.setEmailStatus('skipped');
+                    }
+                } else {
+                    console.warn('Firebase function not available');
+                    // Without Firebase check, skip emailing to avoid multiple sends
+                    this.setEmailStatus('skipped');
+                }
+            } catch (error) {
+                console.error('❌ Error saving simulation data:', error);
+                this.setEmailStatus('error', error);
+            }
+        }
+
+        // Update inline status element in the modal
+        setEmailStatus(state, detail) {
+            const el = document.getElementById('emailSendStatus');
+            if (!el) return;
+
+            switch (state) {
+                case 'checking':
+                    el.className = 'alert alert-info mt-3';
+                    el.innerHTML = `<i class="bi bi-search"></i> Menyemak rekod kempen untuk e-mel: <strong>${this.userEmail}</strong>`;
+                    break;
+                case 'sending':
+                    el.className = 'alert alert-info mt-3';
+                    el.innerHTML = `<i class="bi bi-envelope-fill"></i> Menghantar keputusan ke e-mel: <strong>${this.userEmail}</strong>`;
+                    break;
+                case 'sent':
+                    el.className = 'alert alert-success mt-3';
+                    el.innerHTML = `<i class="bi bi-check-circle-fill"></i> Maklumat dihantar ke: <strong>${this.userEmail}</strong>`;
+                    break;
+                case 'mailto':
+                    el.className = 'alert alert-info mt-3';
+                    el.innerHTML = `<i class="bi bi-info-circle-fill"></i> Tetingkap e-mel dibuka untuk menghantar keputusan kepada <strong>${this.userEmail}</strong>.`;
+                    break;
+                case 'skipped':
+                    el.className = 'alert alert-warning mt-3';
+                    el.innerHTML = `<i class="bi bi-exclamation-triangle-fill"></i> Keputusan tidak dihantar kerana kempen ini telah direkodkan sebelum ini.`;
+                    break;
+                case 'invalid':
+                    el.className = 'alert alert-warning mt-3';
+                    el.innerHTML = `<i class="bi bi-info-circle-fill"></i> E-mel tidak sah. Keputusan tidak dihantar.`;
+                    break;
+                case 'error':
+                    el.className = 'alert alert-danger mt-3';
+                    el.innerHTML = `<i class="bi bi-x-circle-fill"></i> Gagal menghantar keputusan. <small>${String(detail || '')}</small>`;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /**
+         * Show duplicate simulation message
+         */
+        showDuplicateMessage() {
+            // Add a subtle indicator in the results modal that this was a duplicate
+            const resultsContent = document.getElementById('resultsContent');
+            const duplicateWarning = document.createElement('div');
+            duplicateWarning.className = 'alert alert-warning mt-3';
+            duplicateWarning.innerHTML = `
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <strong>Nota:</strong> Anda telah melengkapkan simulasi untuk kempen ini sebelumnya. Keputusan tidak disimpan lagi.
+            `;
+            resultsContent.appendChild(duplicateWarning);
+        }
+
+        /**
+         * Show success message (optional)
+         */
+        showSuccessMessage() {
+            // You can add a success indicator here if needed
+            console.log('✅ Simulation completed and saved successfully');
+        }
+
+        /**
+         * Restart simulation
+         */
+        restartSimulation() {
+            const resultsModal = bootstrap.Modal.getInstance(document.getElementById('resultsModal'));
+            resultsModal.hide();
+            
+            setTimeout(() => {
+                // Reset progress and restart simulation automatically
+                document.getElementById('simulationProgressBar').style.width = '0%';
+                document.getElementById('simulationProgressText').textContent = 'Simulasi 0/5';
+                
+                // Restart simulation automatically
+                this.startSimulation();
+            }, 300);
+        }
     }
 
-    // Panggil fungsi ini apabila halaman dimuat
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeSimulator();
+    // Global simulation instance
+    let phishingSimulation;
+
+// Results popup and email helpers
+PhishingSimulation.prototype.buildEmailHtml = function(score) {
+    const starsHtml = Array.from({ length: 5 }, (_, i) =>
+        `<span style='font-size:18px;color:${i < score.stars ? '#F7B500' : '#ccc'};margin-right:2px;'>★</span>`
+    ).join('');
+
+    const breakdownHtml = this.simulationData.map((simulation, index) => {
+        const response = this.userResponses[index];
+        const answered = Boolean(response);
+        const isCorrect = answered ? response.isCorrect : false;
+        const badgeColor = !answered ? '#6c757d' : (isCorrect ? '#28a745' : '#dc3545');
+        const badgeText = !answered ? 'Tidak dijawab' : (isCorrect ? 'Betul' : 'Salah');
+        return `
+            <tr>
+                <td style='padding:8px 12px;border-bottom:1px solid #eee;'>Simulasi ${index + 1}: ${simulation.title}</td>
+                <td style='padding:8px 12px;text-align:right;border-bottom:1px solid #eee;'>
+                    <span style='display:inline-block;padding:4px 8px;border-radius:12px;background:${badgeColor};color:#fff;font-size:12px;'>${badgeText}</span>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    const ratingColor = score.ratingClass === 'text-success' ? '#28a745'
+        : score.ratingClass === 'text-info' ? '#17a2b8'
+        : score.ratingClass === 'text-warning' ? '#ffc107'
+        : '#dc3545';
+
+    const accentBar = score.percentage >= 70 ? '#28a745' : '#ffc107';
+
+    return `
+        <div style='font-family:Segoe UI,Arial,sans-serif;background:#f8f9fa;padding:24px;'>
+          <div style='max-width:720px;margin:0 auto;background:#fff;border:1px solid #eee;border-radius:12px;overflow:hidden;'>
+            <div style='background:linear-gradient(135deg,#00573F,#004d36);color:#fff;padding:16px 20px;border-bottom:4px solid #F7B500;'>
+              <div style='font-size:16px;font-weight:bold;'>Keputusan Simulasi Phishing</div>
+              <div style='font-size:12px;opacity:0.9;'>Kempen: ${this.campaignId} &nbsp;|&nbsp; Pengguna: ${this.firstName || 'Unknown'} &lt;${this.userEmail}&gt;</div>
+            </div>
+            <div style='padding:20px;'>
+              <div style='text-align:center;margin-bottom:16px;'>
+                <div style='font-size:36px;font-weight:800;color:${ratingColor};'>${score.percentage}%</div>
+                <div style='margin-top:8px;'>${starsHtml}</div>
+                <div style='margin-top:8px;font-size:16px;font-weight:600;color:${ratingColor};'>${score.rating}</div>
+                <div style='margin-top:4px;font-size:14px;color:#333;'>${score.correctAnswers}/${score.totalSimulations} jawapan betul</div>
+              </div>
+              <div style='height:4px;background:${accentBar};border-radius:2px;margin:8px 0 16px;'></div>
+              <div style='font-size:15px;font-weight:600;margin-bottom:8px;color:#00573F;'>Perincian Jawapan</div>
+              <table style='width:100%;border-collapse:collapse;'>${breakdownHtml}</table>
+              <div style='margin-top:16px;padding:12px;border-radius:8px;background:${score.percentage >= 70 ? 'rgba(40,167,69,0.1)' : 'rgba(255,193,7,0.15)'};border:1px solid ${score.percentage >= 70 ? '#28a745' : '#ffc107'};color:#2c3e50;'>
+                <div style='font-weight:600;margin-bottom:6px;'>Cadangan:</div>
+                ${score.percentage >= 70
+                    ? '<div>Kemahiran anda sangat baik! Teruskan berwaspada.</div>'
+                    : '<div>Pertimbangkan latihan keselamatan siber untuk meningkatkan kesedaran phishing.</div>'
+                }
+              </div>
+              <div style='margin-top:18px;font-size:12px;color:#666;'>Dihantar pada: ${new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' })}</div>
+            </div>
+          </div>
+        </div>
+    `;
+};
+
+PhishingSimulation.prototype.showResultsPopup = function() {
+    const resultsContent = document.getElementById('resultsContent');
+    const html = resultsContent ? resultsContent.innerHTML : '<p>Keputusan disediakan.</p>';
+
+    Swal.fire({
+        title: 'Keputusan Simulasi',
+        html: `${html}<div style='margin-top:12px;font-size:14px;color:#555;'><em>Menghantar keputusan ke e-mel: ${this.userEmail}</em></div>`,
+        width: 720,
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading()
+    });
+};
+
+// Post to Apps Script via hidden form + iframe to avoid CORS/preflight
+PhishingSimulation.prototype.postViaHiddenForm = function(url, fields) {
+    const iframe = document.createElement('iframe');
+    iframe.name = 'appsScriptFrame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+    form.target = 'appsScriptFrame';
+    form.style.display = 'none';
+
+    const flat = {
+        to: fields.to,
+        subject: fields.subject,
+        htmlBody: fields.htmlBody
+    };
+    Object.entries(flat).forEach(([k, v]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = k;
+        input.value = v;
+        form.appendChild(input);
     });
 
-    function checkSimulation(answer) {
-        // Fungsi sedia ada untuk semak jawapan
-        document.getElementById('simulationResult').style.display = 'block';
-        
-        if (answer === 'phishing') {
-            document.getElementById('correctPhishingResult').style.display = 'block';
-            document.getElementById('incorrectSafeResult').style.display = 'none';
-        } else {
-            document.getElementById('correctPhishingResult').style.display = 'none';
-            document.getElementById('incorrectSafeResult').style.display = 'block';
+    document.body.appendChild(form);
+    form.submit();
+
+    setTimeout(() => {
+        try {
+            document.body.removeChild(form);
+            document.body.removeChild(iframe);
+        } catch (_) {}
+    }, 3000);
+};
+
+PhishingSimulation.prototype.sendResultsEmail = async function(score) {
+    try {
+        const email = (this.userEmail || '').trim();
+        const isDummy = /user@lznk\.com\.my/i.test(email);
+
+        if (!email || isDummy) {
+            this.setEmailStatus('invalid');
+            return;
         }
-        
-        document.getElementById('simulationResult').scrollIntoView({ behavior: 'smooth' });
+
+        const subject = `LZNK - Keputusan Simulasi Phishing (${score.correctAnswers}/${score.totalSimulations})`;
+        const htmlBody = this.buildEmailHtml(score);
+        const payload = { to: email, subject, htmlBody };
+
+        if (typeof APPS_SCRIPT_WEBAPP_URL === 'string' && APPS_SCRIPT_WEBAPP_URL.includes('script.google.com')) {
+            // Show sending status
+            this.setEmailStatus('sending');
+
+            // Submit via hidden form (no CORS)
+            this.postViaHiddenForm(APPS_SCRIPT_WEBAPP_URL, payload);
+
+            // Assume success after short delay (Apps Script doesn’t give XHR response to forms)
+            setTimeout(() => this.setEmailStatus('sent'), 1000);
+        } else {
+            // Fallback: open mail client
+            const bodyText = `Keputusan Simulasi Phishing\n\nSkor: ${score.percentage}%\nBetul: ${score.correctAnswers}/${score.totalSimulations}\nKempen: ${this.campaignId}\nPengguna: ${this.firstName || 'Unknown'} <${email}>`;
+            const mailto = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            window.open(mailto, '_blank');
+            this.setEmailStatus('mailto');
+        }
+    } catch (err) {
+        console.error('Email send error:', err);
+        this.setEmailStatus('error', err);
     }
+};
+
+    /**
+     * Initialize the simulation when page loads
+     */
+    function initializeSimulation() {
+        phishingSimulation = new PhishingSimulation();
+        
+        // Start simulation automatically after a short delay
+        setTimeout(() => {
+            phishingSimulation.startSimulation();
+        }, 1000);
+    }
+
+    /**
+     * Start the phishing simulation when user clicks start button
+     */
+    function startPhishingSimulation() {
+        // Hide start button
+        document.getElementById('startSimulationBtn').style.display = 'none';
+        
+        // Show progress bar and simulation container
+        document.querySelector('.simulation-progress').style.display = 'block';
+        document.getElementById('simulationContainer').style.display = 'block';
+        
+        // Start the simulation
+        if (phishingSimulation) {
+            phishingSimulation.startSimulation();
+        }
+    }
+
+    /**
+     * Handle user action button clicks
+     */
+    function handleUserAction(action) {
+        if (phishingSimulation) {
+            phishingSimulation.handleUserAction(action);
+        }
+    }
+
+    /**
+     * Move to next simulation
+     */
+    function nextSimulation() {
+        if (phishingSimulation) {
+            phishingSimulation.nextSimulation();
+        }
+    }
+
+    /**
+     * Restart the simulation
+     */
+    function restartSimulation() {
+        if (phishingSimulation) {
+            phishingSimulation.restartSimulation();
+        }
+    }
+
+    // Legacy functions for backward compatibility
+    function initializeSimulator() {
+        // Set nilai default untuk email dan nama (only if elements exist)
+        const userEmailElement = document.getElementById('userEmail');
+        const userNameElement = document.getElementById('userName');
+        
+        if (userEmailElement) {
+            userEmailElement.textContent = '{{.Email}}';
+        }
+        if (userNameElement) {
+            userNameElement.textContent = '{{.FirstName}}';
+        }
+    }
+
+    function checkSimulation(answer) {
+        // Legacy function - redirect to new simulation if needed
+        if (answer === 'phishing') {
+            handleUserAction('phishing');
+        } else {
+            handleUserAction('click');
+        }
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeSimulator();
+        initializeSimulation();
+    });
     </script>
+<script>
+  (function () {
+    const TOTAL = 5;                // total number of simulations
+    const INDEX = 3;                // this page's simulation index (change if needed)
+    const PREFIX = 'phish_sim_done_';
+
+    function isAllDone() {
+      for (let i = 1; i <= TOTAL; i++) {
+        if (localStorage.getItem(PREFIX + i) !== '1') return false;
+      }
+      return true;
+    }
+
+    // Read identifiers from URL
+    const params = new URLSearchParams(window.location.search);
+    const campaignId = params.get('rid') || params.get('RId') || 'phishing_simulation_campaign';
+    const email = params.get('email') || 'user@lznk.com.my';
+
+    // Allow closing when Firebase has an existing record
+    let allowClose = false;
+    let unsubscribeCompletion = null; // realtime listener cleanup
+
+    // Native close/reload prompt (cannot customize text)
+    const unloadHandler = function (e) {
+      if (!allowClose && !isAllDone()) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', unloadHandler);
+
+    // Lightweight bottom-right toast (non-blocking) to remind completion
+    function createToast() {
+      if (document.getElementById('simToast')) return;
+
+      const style = document.createElement('style');
+      style.textContent = `
+        #simToast {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 9999;
+          background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
+          color: #fff;
+          padding: 12px 16px;
+          border-radius: 12px;
+          box-shadow: 0 10px 20px rgba(0,0,0,.25);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          max-width: 360px;
+          pointer-events: none;
+          border: 2px solid #ff6b6b;
+          animation: wiggle 7s ease-in-out infinite, glow 2.5s ease-in-out infinite;
+        }
+        #simToast .icon {
+          font-size: 1.1rem;
+          color: #fff;
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+        }
+        #simToast .text {
+          font-weight: 700;
+          font-size: .92rem;
+          line-height: 1.3;
+        }
+        #simToast.hide {
+          opacity: 0;
+          transform: translateY(8px);
+          transition: all .25s ease;
+        }
+        #simToast.show {
+          opacity: 1;
+          transform: translateY(0);
+          transition: all .25s ease;
+        }
+        @keyframes glow {
+          0%, 100% {
+            box-shadow: 0 10px 20px rgba(0,0,0,.25), 0 0 0 0 rgba(255,107,107,0);
+          }
+          50% {
+            box-shadow: 0 12px 24px rgba(0,0,0,.3), 0 0 0 10px rgba(255,107,107,.18);
+          }
+        }
+        @keyframes wiggle {
+          0%, 94%, 100% { transform: translateY(0) rotate(0); }
+          96% { transform: translateY(-2px) rotate(-1deg); }
+          98% { transform: translateY(2px) rotate(1deg); }
+        }
+        #simToast .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #fff;
+          box-shadow: 0 0 0 0 rgba(255,255,255,.6);
+          animation: ring 1.8s infinite;
+        }
+        @keyframes ring {
+          0% { box-shadow: 0 0 0 0 rgba(255,255,255,.6); }
+          70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+          100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      const toast = document.createElement('div');
+      toast.id = 'simToast';
+      toast.className = 'hide';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      toast.innerHTML = `
+        <i class="bi bi-exclamation-triangle-fill icon"></i>
+        <div class="text">Sila baca, fahamkan serta selesaikan 5 phishing simulator di bawah</div>
+        <div class="dot" aria-hidden="true"></div>
+      `;
+      document.body.appendChild(toast);
+    }
+
+    function updateToastVisibility() {
+      const toast = document.getElementById('simToast');
+      if (!toast) return;
+      if (!allowClose && !isAllDone()) {
+        toast.className = 'show';
+      } else {
+        toast.className = 'hide';
+      }
+    }
+
+    // Exit intent alert helpers (cooldown + gated by completion state)
+    let lastExitAlertAt = 0;
+    const EXIT_ALERT_COOLDOWN_MS = 10000;
+
+    function shouldShowExitAlert() {
+      const now = Date.now();
+      if (now - lastExitAlertAt < EXIT_ALERT_COOLDOWN_MS) return false;
+      if (allowClose) return false;
+      if (isAllDone()) return false;
+      lastExitAlertAt = now;
+      return true;
+    }
+
+    function showExitIntentAlert() {
+      if (!shouldShowExitAlert()) return;
+      if (window.Swal && typeof window.Swal.fire === 'function') {
+        window.Swal.fire({
+          title: 'Amaran Keluar',
+          text: 'Sila lengkapkan simulasi di bawah dahulu sebelum meninggalkan halaman ini.',
+          icon: 'warning',
+          confirmButtonText: 'Faham'
+        });
+      } else {
+        alert('Sila lengkapkan simulasi dahulu sebelum meninggalkan halaman ini.');
+      }
+    }
+
+    // Attach mouseleave (top edge) and blur event listeners
+    document.addEventListener('mouseout', function (e) {
+      if (!e.relatedTarget && e.clientY <= 0) showExitIntentAlert();
+    });
+
+    document.addEventListener('mouseleave', function (e) {
+      if (e.clientY <= 0) showExitIntentAlert();
+    });
+
+    // Tuned blur: gate by visibility and focus to reduce false positives
+    window.addEventListener('blur', function () {
+      setTimeout(function () {
+        const hidden = document.visibilityState === 'hidden';
+        const focused = document.hasFocus();
+        if (hidden || !focused) {
+          showExitIntentAlert();
+        }
+      }, 120);
+    });
+
+    // Primary disengagement signal: visibilitychange (better for mobile/tab switches)
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') {
+        showExitIntentAlert();
+      }
+    });
+
+    // Analytics: non-blocking beacon on pagehide to measure drop-offs
+    window.addEventListener('pagehide', function () {
+      try {
+        if (!rid) return;
+        const url = `${GOPHISH_HOST}/track?rid=${encodeURIComponent(rid)}&event=pagehide`;
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(url, '');
+        } else {
+          const img = new Image(1, 1);
+          img.src = url;
+          img.style.display = 'none';
+          document.body.appendChild(img);
+        }
+      } catch (_) {}
+    });
+
+    // Keep your existing one-time Firebase check as fallback
+    async function updateAllowClose() {
+      try {
+        if (typeof window.checkExistingSimulation === 'function') {
+          const exists = await window.checkExistingSimulation(campaignId, email);
+          allowClose = !!exists;
+          if (allowClose || isAllDone()) {
+            window.removeEventListener('beforeunload', unloadHandler);
+          }
+          updateToastVisibility();
+        }
+      } catch (err) {
+        console.warn('Firebase check failed:', err);
+      }
+    }
+
+    // NEW: real-time listener so no reload is needed
+    async function startCompletionListener() {
+      try {
+        const { doc, onSnapshot } =
+          await import("https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js");
+
+        const db = window.firebaseDB;
+        if (!db) {
+          console.warn('Firebase DB not ready');
+          return;
+        }
+
+        // Campaign-level listener (no email comparison)
+        const docRef = doc(db, "phishing_simulations", campaignId);
+
+        unsubscribeCompletion = onSnapshot(
+          docRef,
+          (snap) => {
+            const exists = snap.exists();     // campaign-level completion
+            allowClose = exists;
+            if (allowClose || isAllDone()) {
+              window.removeEventListener('beforeunload', unloadHandler);
+            }
+            updateToastVisibility();
+          },
+          (error) => {
+            console.error('Realtime listener error:', error);
+          }
+        );
+      } catch (err) {
+        console.warn('Failed to start Firebase realtime listener:', err);
+      }
+    }
+
+    // Run after DOM is ready
+    document.addEventListener('DOMContentLoaded', function () {
+      createToast();
+      updateToastVisibility();
+      // Start real-time check and run a one-time check as fallback
+      startCompletionListener();
+      updateAllowClose();
+    });
+
+    // Optional: cleanup listener on page unload
+    window.addEventListener('unload', function () {
+      if (typeof unsubscribeCompletion === 'function') {
+        try { unsubscribeCompletion(); } catch (_) {}
+      }
+    });
+
+    // When this page's simulation is finished, update localStorage and re-check
+    window.markKempenGitSimulationDone = async function () {
+      localStorage.setItem(PREFIX + INDEX, '1');
+      if (isAllDone() || allowClose) {
+        window.removeEventListener('beforeunload', unloadHandler);
+      }
+      updateToastVisibility();
+      // Proactively re-check in case the listener hasn’t fired yet
+      await updateAllowClose();
+    };
+  })();
+</script>
 </body>
 </html>
 
@@ -2532,12 +4337,6 @@
         font-size: 1.1rem;
     }
     
-    .quiz-container {
-        background-color: #f1f1f1;
-        padding: 30px;
-        border-radius: 10px;
-        margin-top: 40px;
-    }
     
     .motto {
         font-style: italic;
@@ -2588,6 +4387,58 @@
         
         .tip-card {
             margin-bottom: 20px;
+        }
+        
+        .section-title-modern {
+            font-size: 1.5rem;
+        }
+        
+        .email-detection-section {
+            padding: 2rem 0;
+        }
+        
+        .email-image-wrapper {
+            padding: var(--spacing-md);
+        }
+        
+        
+        .email-detection-section .video-wrapper {
+            padding: var(--spacing-md);
+        }
+        
+        .phishing-tips h2 {
+            font-size: 1.5rem;
+        }
+        
+        .phishing-tips {
+            padding: 2rem 0;
+        }
+        
+        .tip-card-modern {
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tip-card-icon-wrapper {
+            width: 65px;
+            height: 65px;
+        }
+        
+        .tip-card-icon-wrapper .tip-icon-modern {
+            font-size: 1.8rem;
+        }
+        
+        .tip-card-modern h4 {
+            font-size: 1rem;
+        }
+        
+        .tip-card-modern p {
+            font-size: 0.9rem;
+        }
+        
+        .tip-card-example {
+            font-size: 0.8rem;
+            padding: 6px 10px;
         }
         
         .footer {
@@ -2659,5 +4510,677 @@
     img {
         max-width: 100%;
         height: auto;
+    }
+        
+        /* Enhanced Simulation Progress */
+        .simulation-progress {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.98));
+            padding: 25px 30px;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 4px 20px rgba(0, 87, 63, 0.1);
+            margin-bottom: 35px;
+            border: 2px solid rgba(0, 87, 63, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .simulation-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lznk-primary), var(--lznk-accent));
+        }
+        
+        .simulation-progress .progress {
+            height: 12px;
+            border-radius: 50px;
+            background: rgba(0, 87, 63, 0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .simulation-progress .progress-bar {
+            background: linear-gradient(90deg, var(--lznk-primary), var(--lznk-secondary), var(--lznk-accent));
+            background-size: 200% 100%;
+            animation: gradientMove 2s ease-in-out infinite;
+            border-radius: 50px;
+            transition: width 0.5s ease;
+            box-shadow: 0 2px 8px rgba(0, 87, 63, 0.3);
+        }
+        
+        #simulationProgressText {
+            color: var(--lznk-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .email-display-area {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 0;
+            margin-bottom: 20px;
+            min-height: 500px;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .email-display-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e5e7eb;
+        }
+        
+        .email-header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 20px;
+            margin-bottom: 0;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .email-subject-line {
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 20px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 16px;
+        }
+        
+        .email-from, .email-to {
+            margin-bottom: 4px;
+            font-weight: 400;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        .email-from strong, .email-to strong {
+            color: #111827;
+            font-weight: 600;
+            margin-right: 8px;
+            font-size: 13px;
+        }
+        
+        .email-content {
+            line-height: 1.6;
+            color: #374151;
+            padding: 20px;
+            background: #ffffff;
+        }
+        
+        .email-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        .email-date {
+            color: #6b7280;
+            font-size: 12px;
+        }
+        
+        .email-priority {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .email-content p {
+            margin-bottom: 15px;
+        }
+        
+        .email-content ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        .email-content li {
+            margin-bottom: 8px;
+        }
+        
+        .email-cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 20px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all var(--transition-base);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            min-width: 140px;
+        }
+        
+        .email-cta-button.urgent {
+            background: #28a745;
+            color: white;
+            border: 2px solid #1e7e34;
+        }
+        
+        .email-cta-button.normal {
+            background: #28a745;
+            color: white;
+            border: 2px solid #1e7e34;
+        }
+        
+        .email-cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        
+        .email-footer {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+            background: #f9fafb;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .email-footer p {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        
+        .email-footer strong {
+            color: #374151;
+            font-weight: 600;
+        }
+        
+        /* Email attachment and signature styling */
+        .email-attachment {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+        
+        .email-attachment-icon {
+            width: 24px;
+            height: 24px;
+            background: #6b7280;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .email-signature {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        /* Warning and urgency styling */
+        .email-urgent-notice {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .email-urgent-notice strong {
+            color: #dc2626;
+        }
+        
+        .email-info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .email-info-box strong {
+            color: #1d4ed8;
+        }
+        
+        /* Enhanced Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .action-buttons .btn {
+            min-width: 220px;
+            padding: 18px 35px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.05rem;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .action-buttons .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+        }
+        
+        .action-buttons .btn-danger:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            box-shadow: 0 8px 30px rgba(220, 53, 69, 0.4);
+        }
+        
+        .action-buttons .btn-success {
+            background: linear-gradient(135deg, #28a745, #218838);
+            box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3);
+        }
+        
+        .action-buttons .btn-success:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+            box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4);
+        }
+        
+        .action-buttons .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .action-buttons .btn:hover::before {
+            left: 100%;
+        }
+        
+        .action-buttons .btn:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+        
+        .action-buttons .btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .feedback-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            animation: slideInUp 0.5s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .feedback-correct {
+            border-left: 5px solid var(--lznk-success);
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.08) 0%, rgba(40, 167, 69, 0.12) 100%);
+            border-radius: 0 8px 8px 0;
+            padding: 20px 25px 20px 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
+        }
+        
+        .feedback-incorrect {
+            border-left: 5px solid var(--lznk-danger);
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.08) 0%, rgba(220, 53, 69, 0.12) 100%);
+            border-radius: 0 8px 8px 0;
+            padding: 20px 25px 20px 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.15);
+        }
+        
+        .feedback-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .feedback-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .feedback-explanation {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .feedback-tips {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feedback-tips h6 {
+            color: var(--lznk-primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feedback-tips h6::before {
+            content: '💡';
+            font-size: 1.1rem;
+        }
+        
+        .feedback-tips ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .feedback-tips li {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .feedback-tips li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--lznk-success);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .feedback-incorrect .feedback-tips li::before {
+            content: '⚠️';
+            color: var(--lznk-danger);
+        }
+        
+        .next-button-area {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .simulation-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .rating-star {
+            font-size: 2rem;
+            color: #ddd;
+            transition: all var(--transition-base);
+        }
+        
+        .rating-star.active {
+            color: #ffc107;
+            transform: scale(1.1);
+        }
+        
+        .results-summary {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .results-score {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+            background: linear-gradient(135deg, var(--lznk-primary), var(--lznk-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .results-breakdown {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .result-correct .result-icon {
+            color: var(--lznk-success);
+        }
+        
+        .result-incorrect .result-icon {
+            color: var(--lznk-danger);
+        }
+        
+        /* Responsive Design for Simulation */
+        @media (max-width: 768px) {
+            .simulation-title {
+                font-size: 2rem;
+            }
+            
+            .simulation-subtitle {
+                font-size: 1rem;
+            }
+            
+            .simulation-badge {
+                font-size: 0.8rem;
+                padding: 6px var(--spacing-md);
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .action-buttons .btn {
+                min-width: 100%;
+                margin-bottom: 0;
+                padding: 15px 30px;
+            }
+            
+            .email-display-area {
+                padding: 15px;
+                min-height: 300px;
+            }
+            
+            .email-header {
+                padding: 10px 15px;
+            }
+            
+            .results-score {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .simulation-title {
+                font-size: 1.6rem;
+            }
+            
+            .simulation-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .simulation-header {
+                padding: var(--spacing-lg);
+            }
+            
+            .simulation-progress {
+                padding: 15px;
+            }
+            
+            .simulation-progress .progress {
+                height: 10px;
+            }
+            
+            #simulationProgressText {
+                font-size: 0.95rem;
+            }
+            
+            .email-display-area {
+                padding: 10px;
+                min-height: 250px;
+            }
+            
+            .action-buttons .btn {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+                min-width: 100%;
+            }
+            
+            .feedback-area {
+                padding: 15px;
+            }
+        }
+        
+        /* Loading Animation */
+        .simulation-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--lznk-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced tooltip styles for phishing simulation */
+        .tooltip-content {
+            text-align: left;
+            max-width: 350px;
+            line-height: 1.5;
+        }
+        
+        .email-url {
+            color: #0066cc;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            display: inline-block;
+            margin: 4px 0;
+            word-break: break-all;
+        }
+        
+        .tooltip-note {
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 8px;
+            display: block;
+            background: rgba(108, 117, 125, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 3px solid #6c757d;
+        }
+        
+        /* Bootstrap tooltip customization */
+        .tooltip {
+            font-size: 0.875rem;
+        }
+        
+        .tooltip-inner {
+            background-color: #fff;
+            color: #333;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+            text-align: left;
+        }
+        
+        .tooltip.bs-tooltip-top .tooltip-arrow::before {
+            border-top-color: #dc3545;
+        }
+        
+        .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+            border-bottom-color: #dc3545;
+        }
+        
+        .tooltip.bs-tooltip-start .tooltip-arrow::before {
+            border-left-color: #dc3545;
+        }
+        
+        .tooltip.bs-tooltip-end .tooltip-arrow::before {
+            border-right-color: #dc3545;
     }
 </style>
