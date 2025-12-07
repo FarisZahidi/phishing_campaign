@@ -3879,7 +3879,7 @@ PhishingSimulation.prototype.sendResultsEmail = async function(score) {
         e.returnValue = '';
       }
     };
-    window.addEventListener('beforeunload', unloadHandler);
+    // window.addEventListener('beforeunload', unloadHandler);
 
     // Lightweight bottom-right toast (non-blocking) to remind completion
     function createToast() {
@@ -3970,11 +3970,7 @@ PhishingSimulation.prototype.sendResultsEmail = async function(score) {
     function updateToastVisibility() {
       const toast = document.getElementById('simToast');
       if (!toast) return;
-      if (!allowClose && !isAllDone()) {
-        toast.className = 'show';
-      } else {
-        toast.className = 'hide';
-      }
+      toast.className = 'hide';
     }
 
     // Exit intent alert helpers (cooldown + gated by completion state)
@@ -3990,19 +3986,7 @@ PhishingSimulation.prototype.sendResultsEmail = async function(score) {
       return true;
     }
 
-    function showExitIntentAlert() {
-      if (!shouldShowExitAlert()) return;
-      if (window.Swal && typeof window.Swal.fire === 'function') {
-        window.Swal.fire({
-          title: 'Amaran Keluar',
-          text: 'Sila lengkapkan simulasi di bawah dahulu sebelum meninggalkan halaman ini.',
-          icon: 'warning',
-          confirmButtonText: 'Faham'
-        });
-      } else {
-        alert('Sila lengkapkan simulasi dahulu sebelum meninggalkan halaman ini.');
-      }
-    }
+    function showExitIntentAlert() { return; }
 
     // Attach mouseleave (top edge) and blur event listeners
     document.addEventListener('mouseout', function (e) {
